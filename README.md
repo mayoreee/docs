@@ -1,11 +1,11 @@
 <<<<<<< HEAD
 # JMES Docs
 
-<div align="center">
+<!--div align="center">
   <a href="https://docs.jmes.cloud/">
     <img src="./static/img/docs_logo.svg" width=500>
   </a>
-</div>
+</div-->
 
 ---
 
