@@ -18,7 +18,7 @@ const Footer: React.FC = () => {
           <div className="col col--3"></div>
         </div>
         <div className="row">
-          <Copyright />
+          {/* <Copyright /> */}
           <div className="col col--3"></div>
         </div>
       </div>

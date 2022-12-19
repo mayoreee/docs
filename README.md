@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Terra Docs
 
 <div align="center">
@@ -110,3 +111,7 @@ hidden content
 this is a comment in mdx
 */}
 ```
+=======
+# documentation
+This repository is used to store JMES Network Documentation
+>>>>>>> 2e8369d7057aee1f060f44f36964b0b3e1314604
