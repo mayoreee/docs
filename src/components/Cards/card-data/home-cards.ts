@@ -36,13 +36,6 @@ const homeCards: CardProps[] = [
     header: 'Learn about Terra',
     summary: 'Learn about Luna, rewards, staking, and governance.'
   },
-  {
-    href: '/migration-guides.html',
-    lightSVG: '/img/icons/swap-1.svg',
-    darkSVG: '/img/icons/dark/swap-1.svg',
-    header: 'Terra migration guides',
-    summary: 'Move from Terra Classic to the new Terra chain.'
-  },
 ]
 
 export default homeCards;
