@@ -1,10 +1,11 @@
-# Terra Docs
+<<<<<<< HEAD
+# JMES Docs
 
-<div align="center">
-  <a href="https://docs.terra.money/">
+<!--div align="center">
+  <a href="https://docs.jmes.cloud/">
     <img src="./static/img/docs_logo.svg" width=500>
   </a>
-</div>
+</div-->
 
 ---
 
@@ -110,3 +111,7 @@ hidden content
 this is a comment in mdx
 */}
 ```
+=======
+# documentation
+This repository is used to store JMES Network Documentation
+>>>>>>> 2e8369d7057aee1f060f44f36964b0b3e1314604

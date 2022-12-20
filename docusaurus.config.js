@@ -8,15 +8,15 @@ module.exports = async function config() {
   const math = (await import('remark-math')).default;
   const katex = (await import('rehype-katex')).default;
   return {
-    title: 'Terra Docs',
-    tagline: 'The official docs for the Terra blockchain',
-    url: 'https://docs.terra.money',
+    title: 'JMES World Docs',
+    tagline: 'The official docs for JMES World',
+    url: 'https://jmes.world/',
     baseUrl: '/',
     onBrokenLinks: 'throw',
     onBrokenMarkdownLinks: 'warn',
     favicon: 'img/favicon.ico',
-    organizationName: 'terra-money', // Usually your GitHub org/user name.
-    projectName: 'docs', // Usually your repo name.
+    organizationName: 'jmes-world', // Usually your GitHub org/user name.
+    projectName: 'documentation', // Usually your repo name.
     i18n: {
       defaultLocale: 'en',
       locales: ['en'],
@@ -45,7 +45,7 @@ module.exports = async function config() {
             routeBasePath: '/', // Serve the docs at the site's root
             // Please change this to your repo.
             // Remove this to remove the "edit this page" links.
-            editUrl: 'https://github.com/terra-money/docs/blob/main/',
+            editUrl: 'https://github.com/jmes-world/documentation/',
           },
           blog: false,
           theme: {
@@ -57,7 +57,6 @@ module.exports = async function config() {
           },
         }),
       ],
-      ['docusaurus-plugin-matomo', {}],
       [
         'redocusaurus',
         {
@@ -93,20 +92,20 @@ module.exports = async function config() {
         navbar: {
           title: '',
           logo: {
-            alt: 'Terra Docs',
-            src: 'img/logo_light.svg',
-            srcDark: 'img/logo_dark.svg',
+            alt: 'JMES World Docs',
+            src: 'img/logo.png',
+            srcDark: 'img/logo-white.png',
           },
           items: [
             {
-              href: 'https://terra.money', //front-end URL
+              href: 'https://jmes.world/', //front-end URL
               position: 'right',
-              label: 'terra.money',
+              label: 'JMES World',
               className: 'header-terra-link',
-              'aria-label': 'Terra Money',
+              'aria-label': 'JMES World',
             },
             {
-              href: 'https://github.com/terra-money/docs',
+              href: 'https://github.com/jmesworld/docs ',
               position: 'right',
               className: 'header-github-link',
               'aria-label': 'GitHub repository',
@@ -117,12 +116,6 @@ module.exports = async function config() {
         prism: {
           theme: lightCodeTheme,
           darkTheme: darkCodeTheme,
-        },
-        matomo: {
-          matomoUrl: 'https://terradocs.matomo.cloud/',
-          siteId: '2',
-          phpLoader: 'matomo.php',
-          jsLoader: 'matomo.js',
         },
       }),
     stylesheets: [
