@@ -105,7 +105,7 @@ module.exports = async function config() {
               'aria-label': 'JMES World',
             },
             {
-              href: 'https://github.com/jmesworld/documentation',
+              href: 'https://github.com/jmesworld/docs ',
               position: 'right',
               className: 'header-github-link',
               'aria-label': 'GitHub repository',

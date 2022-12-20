@@ -13,7 +13,7 @@ const learnCards: CardProps[] = [
     lightSVG: '/img/icons/station/station.svg',
     darkSVG: '/img/icons/dark/station.svg',
     header: 'Get started with Station',
-    summary: 'Create a wallet and stake Luna for rewards.'
+    summary: 'Create a wallet and stake JMES for rewards.'
   },
   {
     href: '/learn/protocol/#what-is-luna',

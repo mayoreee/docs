@@ -6,14 +6,14 @@ const homeCards: CardProps[] = [
     lightSVG: '/img/icons/buildanapp02.svg',
     darkSVG: '/img/icons/dark/buildanapp02.svg',
     header: 'Start building',
-    summary: 'Click here to learn how to build on Terra.'
+    summary: 'Click here to learn how to build on JMES.'
   },
   {
     href: '/learn/terra-station.html',
     lightSVG: '/img/icons/station/station.svg',
     darkSVG: '/img/icons/dark/station.svg',
     header: 'Get started with Station',
-    summary: 'Create a wallet and stake Luna for rewards.'
+    summary: 'Create a wallet and stake JMES for rewards.'
   },
   {
     href: '/develop/which-tools.html',
@@ -33,8 +33,8 @@ const homeCards: CardProps[] = [
     href: '/learn/protocol.html',
     lightSVG: '/img/icons/terra.svg',
     darkSVG: '/img/icons/dark/terra.svg',
-    header: 'Learn about Terra',
-    summary: 'Learn about Luna, rewards, staking, and governance.'
+    header: 'Learn about JMES',
+    summary: 'Learn about JMES, rewards, staking, and governance.'
   },
 ]
 
