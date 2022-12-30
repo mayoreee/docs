@@ -34,7 +34,7 @@ const sidebars = {
       link: { type: 'doc', id: 'learn/README' },
       items: [
         'learn/protocol',
-        {
+        /*{
           type: 'category',
           label: 'Terra Station',
           link: { type: 'doc', id: 'landing-pages/terra-station' },
@@ -44,7 +44,7 @@ const sidebars = {
               dirName: 'learn/terra-station',
             },
           ],
-        },
+        },*/
         'learn/fees',
         'learn/glossary',
       ],
