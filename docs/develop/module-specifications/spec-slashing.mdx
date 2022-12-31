@@ -4,11 +4,11 @@ import Admonition from '@theme/Admonition';
 
 <Admonition type="info" icon="ℹ️">
 
-Terra's slashing module inherits from the Cosmos SDK's [`slashing`](https://docs.cosmos.network/master/modules/slashing/) module. This document is a stub and mainly covers important Terra-specific notes on how it is used.
+JMES's slashing module inherits from the Cosmos SDK's [`slashing`](https://docs.cosmos.network/master/modules/slashing/) module. This document is a stub and mainly covers important JMES-specific notes on how it is used.
 
 </Admonition>
 
-The slashing module enables Terra to disincentivize any attributable action by a protocol-recognized actor with value at stake by penalizing them. The penalty is called [slashing](../../learn/glossary.mdx#slashing). Terra mainly uses the [`Staking`](spec-staking.mdx) module to slash a validator who violates their responsibilities. This module manages lower-level penalties at the Tendermint consensus level, such as double-signing.
+The slashing module enables JMES to disincentivize any attributable action by a protocol-recognized actor with value at stake by penalizing them. The penalty is called [slashing](../../learn/glossary.mdx#slashing). JMES mainly uses the [`Staking`](spec-staking.mdx) module to slash a validator who violates their responsibilities. This module manages lower-level penalties at the Tendermint consensus level, such as double-signing.
 
 ## Message Types
 
@@ -218,7 +218,7 @@ type Params struct {
 
 ## Genesis parameters
 
-The genesis parameters for the crisis module outlined in the [Genesis Builder Script](https://github.com/terra-money/genesis-tools/blob/main/src/genesis_builder.py#L168) are as follows:
+The genesis parameters for the crisis module outlined in the [Genesis Builder Script](https://github.com/jmesworld/genesis-tools/blob/main/src/genesis_builder.py#L168) are as follows:
 
 ``` py
     # Slashing: slash window setup

@@ -1,14 +1,14 @@
 import Admonition from '@theme/Admonition';
 
-# Install Terrad for Mac (Intel or M1)
+# Install JMESd for Mac (Intel or M1)
 
-Terrad is the command-line interface and daemon that connects to Terra and enables you to interact with the Terra blockchain. Terra Core is the official Golang reference implementation of the Terra node software.
+JMESd is the command-line interface and daemon that connects to JMES and enables you to interact with the JMES blockchain. JMES Core is the official Golang reference implementation of the JMES node software.
 
-This guide is for developers who want to install Terrad and interact with Terra Core without running a full node. If you want to run a full node or join a network, use the documentation on how to [run a full Terra node](../../full-node/run-a-full-terra-node/README.mdx).
+This guide is for developers who want to install JMESd and interact with JMES Core without running a full node. If you want to run a full node or join a network, use the documentation on how to [run a full JMES node](../../full-node/run-a-full-terra-node/README.mdx).
 
-1. Navigate to [https://github.com/terra-money/core/tags](https://github.com/terra-money/core/tags) and click on the latest release. 
+1. Navigate to [https://github.com/jmesworld/core/tags](https://github.com/jmesworld/core/tags) and click on the latest release. 
 
-2. Download the `terra_<latest-version-here>_Darwin_x86_64.tar.gz` file.
+2. Download the `jmes_<latest-version-here>_Darwin_x86_64.tar.gz` file.
 
 3. Unzip the file in the downloads folder by double clicking on it. 
 
@@ -29,7 +29,7 @@ sudo mkdir bin
 4. Navigate to the expanded file in downloads: 
  
 ```bash
-cd Downloads/terra_<downloaded-version>_Darwin_x86_64/
+cd Downloads/jmes_<downloaded-version>_Darwin_x86_64/
 ```
  
 5. Copy `libwasmvm.dylib` to `/lib`:
@@ -39,17 +39,17 @@ sudo cp libwasmvm.dylib /usr/local/lib
 ```
 
 
-6. Add Terrad to your path:
+6. Add JMESd to your path:
 
 ```sh
-sudo cp terrad /usr/local/bin
+sudo cp jmesd /usr/local/bin
 ```
 
 
-7. Start Terrad:
+7. Start JMESd:
 
 ```sh
-terrad
+jmesd
 ```
 
 <Admonition type="note" icon="📝" title="If a security warning occurs:">
@@ -58,7 +58,7 @@ terrad
 
 2. Under the **General** tab, click **Allow anyway**.
 
-3. Run Terrad again. 
+3. Run JMESd again. 
 
 4. When prompted, click **Open**.
 

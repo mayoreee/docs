@@ -57,11 +57,14 @@ const sidebars = {
         'develop/get-started',
         'develop/which-tools',
 
+
+
         {
           type: 'category',
           label: 'Developer tools',
           collapsed: true,
           items: [
+            /*
             {
               type: 'category',
               label: 'Terrain',
@@ -76,26 +79,29 @@ const sidebars = {
                 'develop/terrain/contract-migration',
               ],
             },
-
+            */
             {
               type: 'category',
-              label: 'LocalTerra',
+              label: 'LocalJMES',
               collapsed: true,
               link: { type: 'doc', id: 'develop/localterra/README' },
               items: [
+              /*
                 'develop/localterra/install-localterra',
                 'develop/localterra/configure',
                 'develop/localterra/integrations',
                 'develop/localterra/contracts',
                 'develop/localterra/accounts',
+              */
               ],
             },
             {
               type: 'category',
-              label: 'Feather.js',
+              label: 'JMES.js',
               collapsed: true,
               link: { type: 'doc', id: 'develop/feather-js/README' },
               items: [
+                /*
                 'develop/feather-js/getting-started',
                 'develop/feather-js/terra-classic',
                 'develop/feather-js/common-examples',
@@ -113,8 +119,10 @@ const sidebars = {
                 'develop/feather-js/transactions',
                 'develop/feather-js/wallets',
                 'develop/feather-js/Websockets',
+                */
               ],
             },
+            /*
             {
               type: 'category',
               label: 'Terra.py',
@@ -137,9 +145,10 @@ const sidebars = {
                 'develop/wallet-provider/sign-bytes',
               ],
             },
+            */
             {
               type: 'category',
-              label: 'Terrad',
+              label: 'Jmesd',
               collapsed: true,
               items: [
                 'develop/terrad/install-terrad',
@@ -151,7 +160,7 @@ const sidebars = {
             },
           ],
         },
-
+        /*
         {
           type: 'category',
           label: 'Developer guides',
@@ -179,9 +188,11 @@ const sidebars = {
             },
           ],
         },
+
+        */
         {
           type: 'category',
-          label: 'Terra Core modules',
+          label: 'JMES Core modules',
           collapsed: true,
           link: { type: 'doc', id: 'develop/module-specifications/README' },
           items: [

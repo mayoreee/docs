@@ -1,6 +1,6 @@
-# Using Terrad
+# Using JMESd
 
-This guide will go over commands which are available on Terrad, the command-line interface that connects to Terra and enables you to interact with the Terra blockchain. Terrad operates as both a client and a server as every active validator and full node runs Terrad and communicates with their node via Terrad. You can use Terrad to interact with the Terra blockchain by uploading contracts, querying data, managing staking activities, working with governance proposals, and more. For more general information, run `terrad --help` in your terminal. For more information about a specific Terrad command, append the `-h` or `--help` flag after the command: `terrad query --help`.
+This guide will go over commands which are available on JMESd, the command-line interface that connects to JMES and enables you to interact with the JMES blockchain. JMESd operates as both a client and a server as every active validator and full node runs JMESd and communicates with their node via JMESd. You can use JMESd to interact with the JMES blockchain by uploading contracts, querying data, managing staking activities, working with governance proposals, and more. For more general information, run `jmesd --help` in your terminal. For more information about a specific JMESd command, append the `-h` or `--help` flag after the command: `jmesd query --help`.
 
 ## Accessing a Node
 
@@ -8,7 +8,7 @@ To query state and send transactions, you must connect to a node, which is the a
 
 ### Running your own full node
 
-Running your own full node is the most secure option, but it comes with relatively high resource requirements. For more information about the requirements of running your own full node and a tutorial for installing Terrad, check out the [installation guide](../../full-node/run-a-full-terra-node/build-terra-core.mdx). For a tutorial that explains how to connect to an existing Terra network, see [joining a network](../../full-node/run-a-full-terra-node/join-a-network.mdx).
+Running your own full node is the most secure option, but it comes with relatively high resource requirements. For more information about the requirements of running your own full node and a tutorial for installing JMESd, check out the [installation guide](../../full-node/run-a-full-terra-node/build-terra-core.mdx). For a tutorial that explains how to connect to an existing JMES network, see [joining a network](../../full-node/run-a-full-terra-node/join-a-network.mdx).
 
 ### Connecting to a remote full node
 
@@ -16,45 +16,45 @@ If you don't want to run your own full node, you can connect to someone else's f
 
 To connect to the full node, you need an address in the `https://<host>:<port>` format, for example `https://77.87.106.33:26657`. This address has to be communicated by the full node operator you choose to trust. You will use this address in the following section.
 
-If you are not running a node and would like to communicate through Terrad, lists of public nodes can be found [here](../endpoints.mdx).
+If you are not running a node and would like to communicate through JMESd, lists of public nodes can be found [here](../endpoints.mdx).
 
-## Configuring Terrad
+## Configuring JMESd
 
-Terrad enables you to interact with a node that runs on the Terra network, whether you run it yourself or not. To configure Terrad, edit the the `config.toml` file in the `~/.terra/config/` directory.
+JMESd enables you to interact with a node that runs on the JMES network, whether you run it yourself or not. To configure JMESd, edit the the `config.toml` file in the `~/.jmes/config/` directory.
 
 ## Querying Blockchain State
 
-To query all relevant information from the blockchain, such as account balances, amount of bonded tokens, outstanding rewards, and so on, use `terrad query`. The following list shows some of the most useful commands for delegators:
+To query all relevant information from the blockchain, such as account balances, amount of bonded tokens, outstanding rewards, and so on, use `jmesd query`. The following list shows some of the most useful commands for delegators:
 
 ```bash
 # query account balances and other account-related information
-terrad query account <ACCOUNT_ADDRESS>
-# Account address is of the form terra1rEXAMPLE9tEXAMPLEf9cvEXAMPLEss
-# you can find the one for your node by running `terrad keys list`
+jmesd query account <ACCOUNT_ADDRESS>
+# Account address is of the form jmes1rEXAMPLE9tEXAMPLEf9cvEXAMPLEss
+# you can find the one for your node by running `jmesd keys list`
 
 # query the list of validators
-terrad query staking validators
+jmesd query staking validators
 
 # query the information of a validator given their address
-terrad query staking validator <validatorAddress>
+jmesd query staking validator <validatorAddress>
 
 # query all delegations made from a delegator given their address
 # (note: delegator addresses are regular account addresses)
-terrad query staking delegations <delegatorAddress>
+jmesd query staking delegations <delegatorAddress>
 
 # query a specific delegation made from a delegator to a validator
-terrad query staking delegation <delegatorAddress> <validatorAddress>
+jmesd query staking delegation <delegatorAddress> <validatorAddress>
 
-# query the rewards of a delegator given a delegator address (e.g. terra10snjt8dmpr5my0h76xj48ty80uzwhraqalu4eg)
-terrad query distr rewards <delegatorAddress>
+# query the rewards of a delegator given a delegator address (e.g. jmes10snjt8dmpr5my0h76xj48ty80uzwhraqalu4eg)
+jmesd query distr rewards <delegatorAddress>
 ```
 
 ## Sending Transactions
 
-The `terra tx` command can be used to send transactions containing module messages with state-changing directives that get processed and included in blocks.
+The `jmes tx` command can be used to send transactions containing module messages with state-changing directives that get processed and included in blocks.
 
 ```bash
-terrad tx ...
+jmesd tx ...
 ```
 
 To learn more about the different types of transactions you can issue, see the section for each module.
@@ -64,7 +64,7 @@ To learn more about the different types of transactions you can issue, see the s
 To simulate a transaction without actually broadcasting it, append the `--dry-run` flag to the command statement:
 
 ```bash
-terrad tx bank send \
+jmesd tx bank send \
     <sender_address> \
     <recipient_address> \
     <amount_and_denomination> \
@@ -73,14 +73,14 @@ terrad tx bank send \
 ```
 
 <details> 
-<summary> Example: simulate a Luna transfer: </summary>
+<summary> Example: simulate a bJMES transfer: </summary>
 <p>
 
 ```bash
-terrad tx bank send \
-    terra1ru2ySENDER-EXAMPLEtf9cva9kp33h0jnsm9ss \
-    terra1rRECIPIENT-EXAMPLEtf9cva9kp33h0jnsm9ss \
-    1uluna \
+jmesd tx bank send \
+    jmes1ru2ySENDER-EXAMPLEtf9cva9kp33h0jnsm9ss \
+    jmes1rRECIPIENT-EXAMPLEtf9cva9kp33h0jnsm9ss \
+    1ubJMES \
     --chain-id=pisco-1 \
     --dry-run
 ```
@@ -92,7 +92,7 @@ terrad tx bank send \
 To build a transaction and print its JSON format to STDOUT, append `--generate-only` to the list of the command line arguments. This allows you to separate the creation and signing of a transaction with the broadcasting.
 
 ```bash
-terrad tx bank send \
+jmesd tx bank send \
     <sender_address> \
     <recipient_address> \
     <amount_and_denomination> \
@@ -101,7 +101,7 @@ terrad tx bank send \
 ```
 
 ```bash
-terrad tx sign \
+jmesd tx sign \
     --chain-id=<chain_id> \
     --from=<address> \
     unsignedSendTx.json > signedSendTx.json
@@ -111,9 +111,9 @@ terrad tx sign \
 <p>
 
 ```bash
-terrad tx sign \
+jmesd tx sign \
     --chain-id=pisco-1 \
-    --from=terra1EXAMPLEy09tEXAMPLEtf9EXAMPLE3h0EXAMPLEss unsignedTx.json
+    --from=jmes1EXAMPLEy09tEXAMPLEtf9EXAMPLE3h0EXAMPLEss unsignedTx.json
 ```
 
 A successful transaction response should look similar to the following:
@@ -124,11 +124,11 @@ A successful transaction response should look similar to the following:
     "messages": [
       {
         "@type": "/cosmos.bank.v1beta1.MsgSend",
-        "from_address": "terra1ru2ySENDER-EXAMPLEtf9cva9kp33h0jnsm9ss",
-        "to_address": "terra1rRECIPIENT-EXAMPLEtf9cva9kp33h0jnsm9ss",
+        "from_address": "jmes1ru2ySENDER-EXAMPLEtf9cva9kp33h0jnsm9ss",
+        "to_address": "jmes1rRECIPIENT-EXAMPLEtf9cva9kp33h0jnsm9ss",
         "amount": [
           {
-            "denom": "uluna",
+            "denom": "ubJMES",
             "amount": "1"
           }
         ]
@@ -173,18 +173,18 @@ A successful transaction response should look similar to the following:
 You can validate the transaction's signatures by executing the following command:
 
 ```bash
-terrad tx sign --validate-signatures signedSendTx.json
+jmesd tx sign --validate-signatures signedSendTx.json
 ```
 
 You can broadcast the signed transaction to a node by providing the JSON file to the following command:
 
 ```bash
-terrad tx broadcast --node=<node> signedSendTx.json
+jmesd tx broadcast --node=<node> signedSendTx.json
 ```
 
 ## Fees
 
-Transactions on the Terra Protocol network must include a transaction fee in order to be processed. This fee pays for the gas required to run the transaction. To calculate fees, use the following formula:
+Transactions on the JMES Protocol network must include a transaction fee in order to be processed. This fee pays for the gas required to run the transaction. To calculate fees, use the following formula:
 
 $$fees = gas * gasPrices$$
 
@@ -203,7 +203,7 @@ Validators specify a minimum gas price that they use to determine whether or not
 To directly use fees:
 
 ```bash
-terrad tx send ... --fees=100000uluna
+jmesd tx send ... --fees=100000ubJMES
 ```
 
 If you use fees, validators will calculate the implied `minGasPrices` by dividing your fee with the estimated gas consumption.
@@ -211,7 +211,7 @@ If you use fees, validators will calculate the implied `minGasPrices` by dividin
 To use gas prices:
 
 ```bash
-terrad tx send ... --gas-prices=0.05uluna
+jmesd tx send ... --gas-prices=0.05ubJMES
 ```
 
 ### Automatic Fee Estimation
@@ -222,43 +222,43 @@ Gas estimates might be inaccurate as state changes could occur in between the en
 
 The adjustment can be controlled via the `--gas-adjustment` flag, which defaults to the value of 1.0.
 
-To get a direct fee estimation from Terrad:
+To get a direct fee estimation from JMESd:
 
 ```bash
-terrad tx estimate-fee ...\
-    --gas-prices=0.01uluna
+jmesd tx estimate-fee ...\
+    --gas-prices=0.01ubJMES
     --gas-adjustment=1.4
 ```
 
 To create and send transactions using fee-estimation, use the template below as a format:
 
 ```bash
-terrad tx send ... \
-    --gas-prices=0.01uluna
+jmesd tx send ... \
+    --gas-prices=0.01ubJMES
     --gas=auto
     --gas-adjustment=1.4
 ```
 
 ## Shell Autocompletion
 
-Auto-completion scripts for popular UNIX shell interpreters such as `bash` and `zsh` can be generated using the `completion` command. This makes interacting with Terra Core endpoints when using the command-line more convenient.
+Auto-completion scripts for popular UNIX shell interpreters such as `bash` and `zsh` can be generated using the `completion` command. This makes interacting with JMES Core endpoints when using the command-line more convenient.
 
 If you want to generate `bash` completion scripts run the following command:
 
 ```bash
-terrad completion > terrad_completion
+jmesd completion > jmesd_completion
 ```
 
 If you want to generate `zsh` completion scripts run the following command:
 
 ```bash
-terrad completion --zsh > terrad_completion
+jmesd completion --zsh > jmesd_completion
 ```
 
 On most UNIX systems, such scripts may be loaded in `.bashrc` or `.bash_profile` to enable Bash autocompletion.
 
 ```bash
-echo '. terrad_completion' >> ~/.bashrc
+echo '. jmesd_completion' >> ~/.bashrc
 ```
 
 Refer to the user's manual of your operating system's interpreter for information on how to enable shell autocompletion.
