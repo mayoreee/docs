@@ -5,22 +5,23 @@ const learnCards: CardProps[] = [
     href: '/learn/protocol/#what-is-terra',
     lightSVG: '/img/icons/terra.svg',
     darkSVG: '/img/icons/dark/terra.svg',
-    header: 'What is Terra?',
-    summary: 'Learn how Terra works.'
+    header: 'What is JMES?',
+    summary: 'Learn how JMES works.'
   },
+  /*
   {
     href: '/learn/terra-station',
     lightSVG: '/img/icons/station/station.svg',
     darkSVG: '/img/icons/dark/station.svg',
     header: 'Get started with Station',
     summary: 'Create a wallet and stake JMES for rewards.'
-  },
+  },*/
   {
     href: '/learn/protocol/#what-is-luna',
     lightSVG: '/img/icons/luna.svg',
     darkSVG: '/img/icons/dark/luna.svg',
-    header: 'What is Luna?',
-    summary: 'Learn about Luna.'
+    header: 'What is bJMES?',
+    summary: 'Learn about bJMES.'
   },
   {
     href: '/learn/protocol/#validators',
@@ -41,7 +42,7 @@ const learnCards: CardProps[] = [
     lightSVG: '/img/icons/Glossary.svg',
     darkSVG: '/img/icons/dark/Glossary.svg',
     header: 'Glossary',
-    summary: 'Look up terms specific to Terra.'
+    summary: 'Look up terms specific to JMES.'
   },
 ]
 
