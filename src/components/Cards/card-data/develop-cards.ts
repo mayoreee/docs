@@ -15,6 +15,7 @@ const developCards: CardProps[] = [
     header: 'Tool guide',
     summary: 'Not sure  what to use? Check out the Tool guide.'
   },
+  /*
   {
     href: '/develop/terrain',
     lightSVG: '/img/icons/terrain.svg',
@@ -29,19 +30,20 @@ const developCards: CardProps[] = [
     header: 'Mint an NFT',
     summary: 'Learn how to mint your own NFTs using Terrain.'
   },
+  */ 
   {
     href: '/develop/localterra',
     lightSVG: '/img/icons/localterra.svg',
     darkSVG: '/img/icons/dark/localterra.svg',
-    header: 'LocalTerra',
-    summary: 'Run a local Terra blockchain in Docker.'
+    header: 'LocalJMES',
+    summary: 'Run a local JMES blockchain in Docker.'
   },
   {
-    href: 'https://faucet.terra.money/',
+    href: 'http://faucet.jmes.cloud/',
     lightSVG: '/img/icons/Faucet.svg',
     darkSVG: '/img/icons/dark/Faucet.svg',
-    header: 'Terra Testnet Faucet',
-    summary: 'Receive test Luna to carry out transactions on the testnet.'
+    header: 'JMES Testnet Faucet',
+    summary: 'Receive test bJMES to carry out transactions on the testnet.'
   },
 ]
 

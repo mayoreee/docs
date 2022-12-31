@@ -2,7 +2,7 @@ import Admonition from '@theme/Admonition';
 
 # Subcommands
 
-This section describes the subcommands available on Terrad.
+This section describes the subcommands available on JMESd.
 
 ## `debug addr`
 
@@ -11,13 +11,13 @@ Changes an address from hex encoding to bech32.
 **Syntax**
 
 ```bash
-terrad debug addr <address>
+jmesd debug addr <address>
 ```
 
 **Example**
 
 ```bash
-terrad debug addr terra14h2od5f3vahd28uywwvt8sqbi52upnzagshtrm
+jmesd debug addr jmes14h2od5f3vahd28uywwvt8sqbi52upnzagshtrm
 ```
 
 ## `debug pubkey`
@@ -27,13 +27,13 @@ Decodes a pubkey from proto JSON and displays the address.
 **Syntax**
 
 ```bash
-terrad debug pubkey <pubkey>
+jmesd debug pubkey <pubkey>
 ```
 
 **Example**
 
 ```bash
-terrad debug pubkey '{"@type":"/cosmos.crypto.secp256k1.PubKey","key":"AurroA7jvfPd1AadmmOvWM2rJSwipXfRf8yD6pLbA2DJ"}'
+jmesd debug pubkey '{"@type":"/cosmos.crypto.secp256k1.PubKey","key":"AurroA7jvfPd1AadmmOvWM2rJSwipXfRf8yD6pLbA2DJ"}'
 ```
 
 ## `debug raw-bytes`
@@ -43,13 +43,13 @@ Changes raw bytes to hex.
 **Syntax**
 
 ```bash
-terrad debug raw-bytes <raw-bytes>
+jmesd debug raw-bytes <raw-bytes>
 ```
 
 **Example**
 
 ```bash
-terrad debug raw-bytes [72 101 108 108 111 44 32 112 108 97 121 103 114 111 117 110 100]
+jmesd debug raw-bytes [72 101 108 108 111 44 32 112 108 97 121 103 114 111 117 110 100]
 ```
 
 ## `keys add`
@@ -65,7 +65,7 @@ For security purposes, run this command on an offline computer.
 **Syntax**
 
 ```bash
-terrad keys add <your-key-name>
+jmesd keys add <your-key-name>
 ```
 
 where `<your-key-name>` is the name of the account. It references the account number used to derive the key pair from the mnemonic. When you want to send a transaction, you will use this name to identify your account.
@@ -95,7 +95,7 @@ rm ~/.bash_history
 To generate more accounts from the same mnemonic, run:
 
 ```bash
-terrad keys add <your-key-name> --recover --account 1
+jmesd keys add <your-key-name> --recover --account 1
 ```
 
 You are prompted to specify a passphrase and your mnemonic. To generate a different account, change the account number.
@@ -109,7 +109,7 @@ Do not use the same passphrase for multiple keys. Do not lose or share your mnem
 **Example**
 
 ```bash
-terrad keys add myAccount
+jmesd keys add myAccount
 ```
 
 In some cases, you might need to recover your key. If you have the mnemonic that was used to generate your private key, you can recover it and re-register your key. Issuing the following command will prompt you to enter your 24-word mnemonic.
@@ -117,37 +117,37 @@ In some cases, you might need to recover your key. If you have the mnemonic that
 **Syntax**
 
 ```bash
-terrad keys add <yourKeyName> --recover
+jmesd keys add <yourKeyName> --recover
 ```
 
 For information about generating multisignature accounts and signing transactions, see [Sign with a multisig account](../guides/sign-with-multisig.mdx).
 
 ## `keys show`
 
-Retrieves an address for a specified account. The address is prefixed by `terra-`, for example `terra15h6vd5f0wqps26zjlwrc6chah08ryu4hzzdwhc`. To receive funds, you must give an account address to the sender.
+Retrieves an address for a specified account. The address is prefixed by `jmes-`, for example `jmes15h6vd5f0wqps26zjlwrc6chah08ryu4hzzdwhc`. To receive funds, you must give an account address to the sender.
 
 **Syntax**
 
 ```bash
-terrad keys show <account-name>
+jmesd keys show <account-name>
 ```
 
 **Example**
 
 ```bash
-terrad keys show myAccount
+jmesd keys show myAccount
 ```
 
 To show a validator's address, append the `--bech=val` flag to the end of the command statement, as shown in the following example:
 
 ```bash
-terrad keys show accountExample --bech=val
+jmesd keys show accountExample --bech=val
 ```
 
-To show the validator consensus address that is generated when the node is created by `terrad init` and the Tendermint signing key for the node, use the `tendermint` command, as shown in the following example:
+To show the validator consensus address that is generated when the node is created by `jmesd init` and the Tendermint signing key for the node, use the `tendermint` command, as shown in the following example:
 
 ```bash
-terrad tendermint show-address
+jmesd tendermint show-address
 ```
 
 ## `keys list`
@@ -157,7 +157,7 @@ Lists all your keys.
 **Syntax**
 
 ```bash
-terrad keys list
+jmesd keys list
 ```
 
 ## `query authz grants`
@@ -167,19 +167,19 @@ Retrieves all existing grants between a granter and a grantee.
 **Syntax**
 
 ```bash
-terrad query authz grants <granter-address> <grantee-address>
+jmesd query authz grants <granter-address> <grantee-address>
 ```
 
 **Example**
 
 ```bash
-terrad query authz grants terra15h6vd5f0wqps26zjlwrc6chah08ryu4hzzdwhc terra14h2od5f3vahd28uywwvt8sqbi52upnzagshtrm
+jmesd query authz grants jmes15h6vd5f0wqps26zjlwrc6chah08ryu4hzzdwhc jmes14h2od5f3vahd28uywwvt8sqbi52upnzagshtrm
 ```
 
 Additionally, the `grants` command can retrieve the specific grant between a granter and a grantee for a message type by appending the message type URL to the end of the command statement, as shown in the following example:
 
 ```bash
-terrad query authz grants terra15h6vd5f0wqps26zjlwrc6chah08ryu4hzzdwhc terra14h2od5f3vahd28uywwvt8sqbi52upnzagshtrm /cosmos.bank.v1beta1.MsgSend
+jmesd query authz grants jmes15h6vd5f0wqps26zjlwrc6chah08ryu4hzzdwhc jmes14h2od5f3vahd28uywwvt8sqbi52upnzagshtrm /cosmos.bank.v1beta1.MsgSend
 ```
 
 ## `query bank balances`
@@ -189,13 +189,13 @@ Displays your account balance, account number, and sequence number (nonce).
 **Syntax**
 
 ```bash
-terrad query bank balances <account-address>
+jmesd query bank balances <account-address>
 ```
 
 **Example**
 
 ```bash
-terrad query bank balances terra15h6vd5f0wqps26zjlwrc6chah08ryu4hzzdwhc
+jmesd query bank balances jmes15h6vd5f0wqps26zjlwrc6chah08ryu4hzzdwhc
 ```
 
 <Admonition type="note" icon="📝">
@@ -223,19 +223,19 @@ Checks the all the current outstanding rewards that have not been withdrawn.
 **Syntax**
 
 ```bash
-terrad query distribution rewards
+jmesd query distribution rewards
 ```
 
 Check the current rewards earned by a specific delegator by appending the `<delegator-address>` at the end of the command statement, as shown in the following example:
 
 ```bash
-terrad query distribution rewards terra14h2od5f3vahd28uywwvt8sqbi52upnzagshtrm
+jmesd query distribution rewards jmes14h2od5f3vahd28uywwvt8sqbi52upnzagshtrm
 ```
 
 Check the current rewards earned by a delegator and restricted to one validator by appending the `<delegator-address>` followed by the `<validator-address>` at the end of the command statement, as shown in the following example:
 
 ```bash
-terrad query distribution rewards terra14h2od5f3vahd28uywwvt8sqbi52upnzagshtrm terra19t4gde4f8ndwx67qhbnur9yqdc31xznpksajbcy
+jmesd query distribution rewards jmes14h2od5f3vahd28uywwvt8sqbi52upnzagshtrm jmes19t4gde4f8ndwx67qhbnur9yqdc31xznpksajbcy
 ```
 
 ## `query distribution commission`
@@ -245,13 +245,13 @@ Checks the current outstanding commission for a validator.
 **Syntax**
 
 ```bash
-terrad query distribution commission <validator_address>
+jmesd query distribution commission <validator_address>
 ```
 
 **Example**
 
 ```bash
-terrad query distribution commission terra19t4gde4f8ndwx67qhbnur9yqdc31xznpksajbcy
+jmesd query distribution commission jmes19t4gde4f8ndwx67qhbnur9yqdc31xznpksajbcy
 ```
 
 ## `query distribution slashes`
@@ -261,13 +261,13 @@ Checks historical slashes for a validator within a range of blocks.
 **Syntax**
 
 ```bash
-terrad query distribution slashes <validator-address> <start-block-height> <end-block-height>
+jmesd query distribution slashes <validator-address> <start-block-height> <end-block-height>
 ```
 
 **Example**
 
 ```bash
-terrad query distribution slashes terra19t4gde4f8ndwx67qhbnur9yqdc31xznpksajbcy 25 300
+jmesd query distribution slashes jmes19t4gde4f8ndwx67qhbnur9yqdc31xznpksajbcy 25 300
 ```
 
 ## `query distribution community-pool`
@@ -277,7 +277,7 @@ Checks all coins in the community pool.
 **Syntax**
 
 ```bash
-terrad query distribution community-pool
+jmesd query distribution community-pool
 ```
 
 ## `query distribution params`
@@ -287,7 +287,7 @@ Checks the current distribution parameters.
 **Syntax**
 
 ```bash
-terrad query distribution params
+jmesd query distribution params
 ```
 
 The parameters are returned in YAML, as shown in the following example:
@@ -306,13 +306,13 @@ Retrieves information about a single proposal deposit on a proposal by its ident
 **Syntax**
 
 ```bash
-terrad query gov deposit <proposal-id> <depositor-address>
+jmesd query gov deposit <proposal-id> <depositor-address>
 ```
 
 **Example**
 
 ```bash
-terrad query gov deposit 4 terra1skjwj5whet0lpe65qaq4rpq03hjxlwd9nf39lk
+jmesd query gov deposit 4 jmes1skjwj5whet0lpe65qaq4rpq03hjxlwd9nf39lk
 ```
 
 ## `query gov deposits`
@@ -322,13 +322,13 @@ Retrieves all deposits submitted to a proposal after it is created.
 **Syntax**
 
 ```bash
-terrad query gov deposits <proposal-id>
+jmesd query gov deposits <proposal-id>
 ```
 
 **Example**
 
 ```bash
-terrad query gov deposits 5
+jmesd query gov deposits 5
 ```
 
 ## `query gov proposal`
@@ -340,13 +340,13 @@ Retrieves information about one proposal.
 **Syntax**
 
 ```bash
-terrad query gov proposal <proposal-id>
+jmesd query gov proposal <proposal-id>
 ```
 
 **Example**
 
 ```bash
-terrad query gov proposal 3
+jmesd query gov proposal 3
 ```
 
 ## `query gov proposals`
@@ -356,13 +356,13 @@ Retrieves information about all available proposals.
 **Syntax**
 
 ```bash
-terrad query gov proposals
+jmesd query gov proposals
 ```
 
 Additionally, you can query proposals filtered by details, such as `voter` or `depositor`, by appending the corresponding flag and address at the end of the command statement, as shown in the following example:
 
 ```bash
-terrad query gov proposals --voter terra13a8ddv3h7kbcn73akcbpe7ueks22vaolewpaxmb
+jmesd query gov proposals --voter jmes13a8ddv3h7kbcn73akcbpe7ueks22vaolewpaxmb
 ```
 
 ## `query gov vote`
@@ -372,13 +372,13 @@ Retrieves information about a single vote by a specific voter.
 **Syntax**
 
 ```bash
-terrad query gov vote <proposal-id> <voter-address>
+jmesd query gov vote <proposal-id> <voter-address>
 ```
 
 **Example**
 
 ```bash
-terrad query gov vote 7 terra13a8ddv3h7kbcn73akcbpe7ueks22vaolewpaxmb
+jmesd query gov vote 7 jmes13a8ddv3h7kbcn73akcbpe7ueks22vaolewpaxmb
 ```
 
 ## `query gov votes`
@@ -388,13 +388,13 @@ Retrieves all the votes submitted to the proposal.
 **Syntax**
 
 ```bash
-terrad query gov votes <proposal-id>
+jmesd query gov votes <proposal-id>
 ```
 
 **Example**
 
 ```bash
-terrad query gov votes 9
+jmesd query gov votes 9
 ```
 
 ## `query gov tally`
@@ -404,13 +404,13 @@ Retrieves the current tally for a specified proposal.
 **Syntax**
 
 ```bash
-terrad query gov tally <proposal-id>
+jmesd query gov tally <proposal-id>
 ```
 
 **Example**
 
 ```bash
-terrad query gov tally 4
+jmesd query gov tally 4
 ```
 
 ## `query gov param`
@@ -420,13 +420,13 @@ Retrieves all the parameters for the specified governance process.
 **Syntax**
 
 ```bash
-terrad query gov param <process-type>
+jmesd query gov param <process-type>
 ```
 
 **Example**
 
 ```bash
-terrad query gov param voting
+jmesd query gov param voting
 ```
 
 ## `query gov params`
@@ -436,7 +436,7 @@ Retrieves all the parameters for all governance processes.
 **Syntax**
 
 ```bash
-terrad query gov params
+jmesd query gov params
 ```
 
 The parameters are returned in the following format:
@@ -450,7 +450,7 @@ tally_params:
   veto: "0.334000000000000000"
 deposit_parmas:
   min_deposit:
-    - denom: uluna
+    - denom: ubjmes
       amount: "10000000"
   max_deposit_period: 48h0m0s
 ```
@@ -462,7 +462,7 @@ Retrieves the value of annual provisions.
 **Syntax**
 
 ```sh
-terrad query mint annual-provisions
+jmesd query mint annual-provisions
 ```
 
 ## `query mint inflation`
@@ -472,7 +472,7 @@ Retrieves the current value of inflation.
 **Syntax**
 
 ```sh
-terrad query mint inflation
+jmesd query mint inflation
 ```
 
 ## `query mint params`
@@ -482,13 +482,13 @@ Retrieves the mint module's parameters.
 **Syntax**
 
 ```sh
-terrad query mint params
+jmesd query mint params
 ```
 
 Parameters are returned in the following format:
 
 ```yaml
-mint_denom: uluna
+mint_denom: ubjmes
 inflation_rate_change: "0.130000000000000000"
 inflation_max: "0.200000000000000000"
 inflation_min: "0.070000000000000000"
@@ -503,13 +503,13 @@ Retrieves a validator's signing info.
 **Syntax**
 
 ```bash
-terrad query slashing signing-info <validator-consensus-public-key>
+jmesd query slashing signing-info <validator-consensus-public-key>
 ```
 
 **Example**
 
 ```bash
-terrad query slashing signing-info terravalconspub1atjdueldlxwft8d4729pqhdhm3nlss0u4wx7wpeqb1zhjf8yr1tn7cgw2b4q4yv9na
+jmesd query slashing signing-info jmesvalconspub1atjdueldlxwft8d4729pqhdhm3nlss0u4wx7wpeqb1zhjf8yr1tn7cgw2b4q4yv9na
 ```
 
 ## `query slashing signing-infos`
@@ -519,7 +519,7 @@ Retrieves signing information of all validators.
 **Syntax**
 
 ```bash
-terrad query slashing signing-infos
+jmesd query slashing signing-infos
 ```
 
 ## `query slashing params`
@@ -529,7 +529,7 @@ Retrieves the genesis parameters for the slashing module.
 **Syntax**
 
 ```bash
-terrad query slashing params
+jmesd query slashing params
 ```
 
 The parameters are returned in the following format:
@@ -549,13 +549,13 @@ Retrieves delegation information for a validator.
 **Syntax**
 
 ```bash
-terrad query staking delegation <delegator-address> <validator-address>
+jmesd query staking delegation <delegator-address> <validator-address>
 ```
 
 **Example**
 
 ```bash
-terrad query staking delegation terra1gghjut3ccd8ay0zduzj64hwre2fxs9ld75ru9p terravaloper15h6vd5f0wqps26zjlwrc6chah08ryu4hzzdwhc
+jmesd query staking delegation jmes1gghjut3ccd8ay0zduzj64hwre2fxs9ld75ru9p jmesvaloper15h6vd5f0wqps26zjlwrc6chah08ryu4hzzdwhc
 ```
 
 ## `query staking delegations`
@@ -565,13 +565,13 @@ Retrieves delegations for a delegator on all validators.
 **Syntax**
 
 ```bash
-terrad query staking delegations <delegator-address>
+jmesd query staking delegations <delegator-address>
 ```
 
 **Example**
 
 ```bash
-terrad query staking delegations terra1gghjut3ccd8ay0zduzj64hwre2fxs9ld75ru9p
+jmesd query staking delegations jmes1gghjut3ccd8ay0zduzj64hwre2fxs9ld75ru9p
 ```
 
 ## `query staking delegations-to`
@@ -581,13 +581,13 @@ Retrieves all of the delegations on a particular validator.
 **Syntax**
 
 ```bash
-terrad query staking delegations-to <validator-address>
+jmesd query staking delegations-to <validator-address>
 ```
 
 **Example**
 
 ```bash
-terrad query staking delegations-to terravaloper15h6vd5f0wqps26zjlwrc6chah08ryu4hzzdwhc
+jmesd query staking delegations-to jmesvaloper15h6vd5f0wqps26zjlwrc6chah08ryu4hzzdwhc
 ```
 
 ## `query staking historical-info`
@@ -597,13 +597,13 @@ Retrieves all historical information at a specified height.
 **Syntax**
 
 ```bash
-terrad query staking historical-info <height>
+jmesd query staking historical-info <height>
 ```
 
 **Example**
 
 ```bash
-terrad query staking historical-info 23
+jmesd query staking historical-info 23
 ```
 
 ## `query staking params`
@@ -613,7 +613,7 @@ Retrieves all staking parameters.
 **Syntax**
 
 ```bash
-terrad query staking params
+jmesd query staking params
 ```
 
 The parameters are returned in the following format:
@@ -623,7 +623,7 @@ unbonding_time: 504h0m0s
 max_validators: 100
 max_entries: 100
 historical_entries: 0
-bond_denom: uluna
+bond_denom: ubjmes
 ```
 
 ## `query staking pool`
@@ -633,7 +633,7 @@ Retrieves amounts stored in the staking pool.
 **Syntax**
 
 ```bash
-terrad query staking pool
+jmesd query staking pool
 ```
 
 The following information is returned:
@@ -650,13 +650,13 @@ Retrieves redelegation information for an individual delegator between a source 
 **Syntax**
 
 ```bash
-terrad query staking redelegation <delegator-address> <src-val-addr> <dst-val-addr>
+jmesd query staking redelegation <delegator-address> <src-val-addr> <dst-val-addr>
 ```
 
 **Example**
 
 ```bash
-terrad query staking redelegation terra1gghjut3ccd8ay0zduzj64hwre2fxs9ld75ru9p terravaloper1l2rsakp388kuv9k8qzq6lrm9taddae7fpx59wm terravaloper1gghjut3ccd8ay0zduzj64hwre2fxs9ldmqhffj
+jmesd query staking redelegation jmes1gghjut3ccd8ay0zduzj64hwre2fxs9ld75ru9p jmesvaloper1l2rsakp388kuv9k8qzq6lrm9taddae7fpx59wm jmesvaloper1gghjut3ccd8ay0zduzj64hwre2fxs9ldmqhffj
 ```
 
 ## `query staking redelegations`
@@ -666,13 +666,13 @@ Retrieves all redelegation information for a delegator.
 **Syntax**
 
 ```bash
-terrad query staking redelegations <delegator-address>
+jmesd query staking redelegations <delegator-address>
 ```
 
 **Example**
 
 ```bash
-terrad query staking redelegations terra1gghjut3ccd8ay0zduzj64hwre2fxs9ld75ru9p
+jmesd query staking redelegations jmes1gghjut3ccd8ay0zduzj64hwre2fxs9ld75ru9p
 ```
 
 ## `query staking redelegations-from`
@@ -682,13 +682,13 @@ Retrieves all the delegations that are redelegating from a specified validator:
 **Syntax**
 
 ```bash
-terrad query staking redelegations-from <validator-address>
+jmesd query staking redelegations-from <validator-address>
 ```
 
 **Example**
 
 ```bash
-terrad query staking redelegations-from terravaloper1gghjut3ccd8ay0zduzj64hwre2fxs9ldmqhffj
+jmesd query staking redelegations-from jmesvaloper1gghjut3ccd8ay0zduzj64hwre2fxs9ldmqhffj
 ```
 
 ## `query staking unbonding-delegation`
@@ -698,13 +698,13 @@ Retrieves information about unbonding delegations for a specified delegator and 
 **Syntax**
 
 ```bash
-terrad query staking unbonding-delegation <delegator-address> <validator-address>
+jmesd query staking unbonding-delegation <delegator-address> <validator-address>
 ```
 
 **Example**
 
 ```bash
-terrad query staking unbonding-delegation terra1gghjut3ccd8ay0zduzj64hwre2fxs9ld75ru9p terravaloper1l2rsakp388kuv9k8qzq6lrm9taddae7fpx59wm
+jmesd query staking unbonding-delegation jmes1gghjut3ccd8ay0zduzj64hwre2fxs9ld75ru9p jmesvaloper1l2rsakp388kuv9k8qzq6lrm9taddae7fpx59wm
 ```
 
 ## `query staking unbonding-delegations`
@@ -714,13 +714,13 @@ Retrieves all your current unbonding delegations for a specified delegator.
 **Syntax**
 
 ```bash
-terrad query staking unbonding-delegations <delegator-address>
+jmesd query staking unbonding-delegations <delegator-address>
 ```
 
 **Example**
 
 ```bash
-terrad query staking unbonding-delegations terra1gghjut3ccd8ay0zduzj64hwre2fxs9ld75ru9p
+jmesd query staking unbonding-delegations jmes1gghjut3ccd8ay0zduzj64hwre2fxs9ld75ru9p
 ```
 
 ## `query staking unbonding-delegations-from`
@@ -730,13 +730,13 @@ Retrieves all the unbonding delegations from a specified validator.
 **Syntax**
 
 ```bash
-terrad query staking unbonding-delegations-from <validator-address>
+jmesd query staking unbonding-delegations-from <validator-address>
 ```
 
 **Example**
 
 ```bash
-terrad query staking unbonding-delegations-from terravaloper1l2rsakp388kuv9k8qzq6lrm9taddae7fpx59wm
+jmesd query staking unbonding-delegations-from jmesvaloper1l2rsakp388kuv9k8qzq6lrm9taddae7fpx59wm
 ```
 
 ## `query staking validators`
@@ -746,13 +746,13 @@ Retrieves the list of all registered validators.
 **Syntax**
 
 ```bash
-terrad query staking validators
+jmesd query staking validators
 ```
 
 To retrieve the information of a single validator, append the validator address to the end of the command statement, as shown in the following example:
 
 ```bash
-terrad query staking validator terravaloper15h6vd5f0wqps26zjlwrc6chah08ryu4hzzdwhc
+jmesd query staking validator jmesvaloper15h6vd5f0wqps26zjlwrc6chah08ryu4hzzdwhc
 ```
 
 ## `query tx`
@@ -762,19 +762,19 @@ Retrieves a transaction by its hash, account sequence, or signature.
 **Syntax to query by hash**
 
 ```bash
-terrad query tx <hash>
+jmesd query tx <hash>
 ```
 
 **Syntax to query by account sequence**
 
 ```bash
-terrad query tx --type=acc_seq <address>:<sequence>
+jmesd query tx --type=acc_seq <address>:<sequence>
 ```
 
 **Syntax to query by signature**
 
 ```bash
-terrad query tx --type=signature <sig1_base64,sig2_base64...>
+jmesd query tx --type=signature <sig1_base64,sig2_base64...>
 ```
 
 ## `query txs`
@@ -784,13 +784,13 @@ Retrieves transactions that match the specified events where results are paginat
 **Syntax**
 
 ```bash
-terrad query txs --events '<event>' --page <page-number> --limit <number-of-results>
+jmesd query txs --events '<event>' --page <page-number> --limit <number-of-results>
 ```
 
 **Example**
 
 ```bash
-terrad query txs --events 'message.sender=cosmos1...&message.action=withdraw_delegator_reward' --page 1 --limit 30
+jmesd query txs --events 'message.sender=cosmos1...&message.action=withdraw_delegator_reward' --page 1 --limit 30
 ```
 
 ## `query wasm bytecode`
@@ -800,7 +800,7 @@ Retrieves the contract's WASM bytecode by referencing its ID.
 **Syntax**
 
 ```sh
-terrad query wasm bytecode <code-id>
+jmesd query wasm bytecode <code-id>
 ```
 
 ## `query wasm code`
@@ -810,7 +810,7 @@ Retrieves information about a piece of uploaded code by referencing its ID.
 **Syntax**
 
 ```sh
-terrad query wasm code <code-id>
+jmesd query wasm code <code-id>
 ```
 
 ## `query wasm contract`
@@ -820,7 +820,7 @@ Retrieves the metadata information about an instantiated contract.
 **Syntax**
 
 ```sh
-terrad query wasm contract <contract-address>
+jmesd query wasm contract <contract-address>
 ```
 
 ## `query wasm contract-store`
@@ -830,7 +830,7 @@ Retrieves data about the contract store of the address and prints the results.
 **Syntax**
 
 ```sh
-terrad query wasm contract-store <contract-address> <query-msg>
+jmesd query wasm contract-store <contract-address> <query-msg>
 ```
 
 where `<query-msg>` is a JSON string that encodes the QueryMsg.
@@ -838,7 +838,7 @@ where `<query-msg>` is a JSON string that encodes the QueryMsg.
 **Example**
 
 ```sh
-terrad query wasm contract-store terra1plju286nnfj3z54wgcggd4enwaa9fgf5kgrgzl '{"config":{}}'
+jmesd query wasm contract-store jmes1plju286nnfj3z54wgcggd4enwaa9fgf5kgrgzl '{"config":{}}'
 ```
 
 ## `query wasm params`
@@ -848,7 +848,7 @@ Retrieves the current WASM module's parameters.
 **Syntax**
 
 ```sh
-terrad query wasm params
+jmesd query wasm params
 ```
 
 The parameters are returned in the following format:
@@ -866,7 +866,7 @@ Retrieves the raw store of a contract and prints the results.
 **Syntax**
 
 ```sh
-terrad query wasm raw-store <contract-address> <key> <subkey>
+jmesd query wasm raw-store <contract-address> <key> <subkey>
 ```
 
 If the data uses a `Singleton`, it has only a key. If the data uses a prefixed data store, such as `PrefixedStorage` or `Bucket`, it can accept a subkey too.
@@ -878,13 +878,13 @@ Runs a transaction for the granter.
 **Syntax**
 
 ```bash
-terrad tx authz exec <msg-tx-json-filename> --from=<grantee-address>
+jmesd tx authz exec <msg-tx-json-filename> --from=<grantee-address>
 ```
 
 **Example**
 
 ```bash
-terrad tx authz exec tx.json --from=terra14h2od5f3vahd28uywwvt8sqbi52upnzagshtrm
+jmesd tx authz exec tx.json --from=jmes14h2od5f3vahd28uywwvt8sqbi52upnzagshtrm
 
 ```
 
@@ -895,19 +895,19 @@ Authorizes another address to run transactions for you.
 **Syntax**
 
 ```bash
-terrad tx authz grant <grantee-address> <authorization-type> --from=<your-address>
+jmesd tx authz grant <grantee-address> <authorization-type> --from=<your-address>
 ```
 
 **Example**
 
 ```bash
-terrad tx authz grant terra14h2od5f3vahd28uywwvt8sqbi52upnzagshtrm send /cosmos.bank.v1beta1.MsgSend --from=terra15h6vd5f0wqps26zjlwrc6chah08ryu4hzzdwhc
+jmesd tx authz grant jmes14h2od5f3vahd28uywwvt8sqbi52upnzagshtrm send /cosmos.bank.v1beta1.MsgSend --from=jmes15h6vd5f0wqps26zjlwrc6chah08ryu4hzzdwhc
 ```
 
 Additionally, you can restrict this authorization to a specified allowance by including the `--spend-limit` flag, as shown in the following example:
 
 ```bash
-terrad tx authz grant terra14h2od5f3vahd28uywwvt8sqbi52upnzagshtrm send /cosmos.bank.v1beta1.MsgSend --spend-limit=15000uluna --from=terra15h6vd5f0wqps26zjlwrc6chah08ryu4hzzdwhc
+jmesd tx authz grant jmes14h2od5f3vahd28uywwvt8sqbi52upnzagshtrm send /cosmos.bank.v1beta1.MsgSend --spend-limit=15000ubjmes --from=jmes15h6vd5f0wqps26zjlwrc6chah08ryu4hzzdwhc
 ```
 
 ## `tx authz revoke`
@@ -917,11 +917,11 @@ Removes authorization from an account.
 **Syntax**
 
 ```bash
-terrad tx authz revoke <grantee-address> <authorization-type> --from=<granter-address>
+jmesd tx authz revoke <grantee-address> <authorization-type> --from=<granter-address>
 ```
 
 **Example**
-terrad tx authz revoke terra14h2od5f3vahd28uywwvt8sqbi52upnzagshtrm /cosmos.bank.v1beta1.MsgSend --from=terra15h6vd5f0wqps26zjlwrc6chah08ryu4hzzdwhc
+jmesd tx authz revoke jmes14h2od5f3vahd28uywwvt8sqbi52upnzagshtrm /cosmos.bank.v1beta1.MsgSend --from=jmes15h6vd5f0wqps26zjlwrc6chah08ryu4hzzdwhc
 
 ## `tx bank send`
 
@@ -930,7 +930,7 @@ Sends coins from one account to another account.
 **Syntax**
 
 ```bash
-terrad tx bank send \
+jmesd tx bank send \
     <from-key-or-address> \
     <to-address> \
     <coins> \
@@ -941,14 +941,14 @@ where
 
 - `<from-key-or-address>` is either the key name or the address. If the `--generate-only` flag is used, only addresses are accepted.
 - `to-address` is an account address.
-- `<coins>` is a comma-separated list of coins specified as `<amount><coin-denominator>`. For example, `1000usdr` or `1000uluna,1000usdr`.
+- `<coins>` is a comma-separated list of coins specified as `<amount><coin-denominator>`. For example, `1000usdr` or `1000ubjmes,1000usdr`.
 
 **Example**
 
 ```bash
-terrad tx bank send \
-    terra15h6vd5f0wqps26zjlwrc6chah08ryu4hzzdwhc \
-    terra14h2od5f3vahd28uywwvt8sqbi52upnzagshtrm \
+jmesd tx bank send \
+    jmes15h6vd5f0wqps26zjlwrc6chah08ryu4hzzdwhc \
+    jmes14h2od5f3vahd28uywwvt8sqbi52upnzagshtrm \
     8600usdr \
     --chain-id=testnet \
 ```
@@ -960,11 +960,11 @@ Funds the community pool with the specified amount.
 **Syntax**
 
 ```bash
-terrad tx distribution fund-community-pool <amount>
+jmesd tx distribution fund-community-pool <amount>
 ```
 
 **Example**
-terrad tx distribution fund-community-pool 100uluna
+jmesd tx distribution fund-community-pool 100ubjmes
 
 ## `tx distribution set-withdraw-addr`
 
@@ -973,13 +973,13 @@ Changes the default withdrawal address for rewards associated with an address.
 **Syntax**
 
 ```bash
-terrad tx distribution set-withdraw-addr <withdrawal-address>
+jmesd tx distribution set-withdraw-addr <withdrawal-address>
 ```
 
 **Example**
 
 ```bash
-terrad tx distribution set-withdraw-addr terra13a8ddv3h7kbcn73akcbpe7ueks22vaolewpaxmb
+jmesd tx distribution set-withdraw-addr jmes13a8ddv3h7kbcn73akcbpe7ueks22vaolewpaxmb
 ```
 
 ## `tx distribution withdraw-all-rewards`
@@ -989,7 +989,7 @@ Withdraws all rewards.
 **Syntax**
 
 ```bash
-terrad tx distribution withdraw-all-rewards
+jmesd tx distribution withdraw-all-rewards
 ```
 
 ## `tx distribution withdraw-rewards`
@@ -999,23 +999,23 @@ Withdraws your rewards against a validator.
 **Syntax**
 
 ```bash
-terrad tx distribution withdraw-rewards <validator-address>
+jmesd tx distribution withdraw-rewards <validator-address>
 ```
 
 **Example**
 
 ```bash
-terrad tx distribution withdraw-rewards terra19t4gde4f8ndwx67qhbnur9yqdc31xznpksajbcy
+jmesd tx distribution withdraw-rewards jmes19t4gde4f8ndwx67qhbnur9yqdc31xznpksajbcy
 ```
 
 ## `tx gov deposit`
 
-For a proposal to be sent to the network, the amount deposited must be above a minimum amount specified by `minDeposit` (initial value is `50000000uluna`). If the proposal you previously created didn't meet this requirement, you can still increase the total amount deposited to activate it. After the minimum deposit is reached, the voting period for the proposal begins.
+For a proposal to be sent to the network, the amount deposited must be above a minimum amount specified by `minDeposit` (initial value is `50000000ubjmes`). If the proposal you previously created didn't meet this requirement, you can still increase the total amount deposited to activate it. After the minimum deposit is reached, the voting period for the proposal begins.
 
 **Syntax**
 
 ```bash
-terrad tx gov deposit <proposal-id> "<deposit-amount>" \
+jmesd tx gov deposit <proposal-id> "<deposit-amount>" \
     --from=<name> \
     --chain-id=<chain-id>
 ```
@@ -1023,8 +1023,8 @@ terrad tx gov deposit <proposal-id> "<deposit-amount>" \
 **Example**
 
 ```bash
-terrad tx gov deposit 15 "10000000luluna" \
-    --from=terra13a8ddv3h7kbcn73akcbpe7ueks22vaolewpaxmb \
+jmesd tx gov deposit 15 "10000000lubjmes" \
+    --from=jmes13a8ddv3h7kbcn73akcbpe7ueks22vaolewpaxmb \
     --chain-id=phoenix-1
 ```
 
@@ -1043,7 +1043,7 @@ Submits proposals and deposits. To create a governance proposal, you must submit
 **Syntax**
 
 ```bash
-terrad tx gov submit-proposal \
+jmesd tx gov submit-proposal \
     --title=<title> \
     --description=<description> \
     --type="Text" \
@@ -1055,12 +1055,12 @@ terrad tx gov submit-proposal \
 **Example**
 
 ```bash
-terrad tx gov submit-proposal \
+jmesd tx gov submit-proposal \
     --title=Funding for NFT platform \
     --description=Information about the NFT platform \
     --type="Text" \
-    --deposit="100000uluna" \
-    --from=terra13a8ddv3h7kbcn73akcbpe7ueks22vaolewpaxmb \
+    --deposit="100000ubjmes" \
+    --from=jmes13a8ddv3h7kbcn73akcbpe7ueks22vaolewpaxmb \
     --chain-id=phoenix-1
 ```
 
@@ -1071,7 +1071,7 @@ When you submit a proposal to change a parameter, it is recommended that you sen
 **Syntax**
 
 ```bash
-terrad tx gov submit-proposal \
+jmesd tx gov submit-proposal \
     param-change <path/to/proposal.json> \
     --from=<name> \
     --chain-id=<chain_id>
@@ -1080,9 +1080,9 @@ terrad tx gov submit-proposal \
 **Example**
 
 ```bash
-terrad tx gov submit-proposal \
+jmesd tx gov submit-proposal \
     param-change /proposals/proposal.json \
-    --from=terra13a8ddv3h7kbcn73akcbpe7ueks22vaolewpaxmb \
+    --from=jmes13a8ddv3h7kbcn73akcbpe7ueks22vaolewpaxmb \
     --chain-id=phoenix-1
 ```
 
@@ -1101,7 +1101,7 @@ where `proposal.json` contains the following information:
   ],
   "deposit": [
     {
-      "denom": "uluna",
+      "denom": "ubjmes",
       "amount": "10000000"
     }
   ]
@@ -1121,7 +1121,7 @@ When you submit a community pool spend proposal, it is recommended that you send
 **Syntax**
 
 ```bash
-terrad tx gov submit-proposal \
+jmesd tx gov submit-proposal \
     community-pool-spend <path/to/proposal.json> \
     --from=<name> \
     --chain-id=<chain_id>
@@ -1130,9 +1130,9 @@ terrad tx gov submit-proposal \
 **Example**
 
 ```bash
-terrad tx gov submit-proposal \
+jmesd tx gov submit-proposal \
     community-pool-spend /proposals/proposal.json \
-    --from=terra13a8ddv3h7kbcn73akcbpe7ueks22vaolewpaxmb \
+    --from=jmes13a8ddv3h7kbcn73akcbpe7ueks22vaolewpaxmb \
     --chain-id=phoenix-1
 ```
 
@@ -1141,17 +1141,17 @@ where `proposal.json` contains the following information:
 ```json
 {
   "title": "Community Pool Spend",
-  "description": "Pay me some Lunas!",
-  "recipient": "terra1s5afhd6gxevu37mkqcvvsj8qeylhn0rzn7cdaq",
+  "description": "Pay me some bJMES!",
+  "recipient": "jmes1s5afhd6gxevu37mkqcvvsj8qeylhn0rzn7cdaq",
   "amount": [
     {
-      "denom": "uluna",
+      "denom": "ubjmes",
       "amount": "10000"
     }
   ],
   "deposit": [
     {
-      "denom": "uluna",
+      "denom": "ubjmes",
       "amount": "10000"
     }
   ]
@@ -1165,7 +1165,7 @@ The proposal to upgrade the software follows the syntax of a `text` proposal.
 **Syntax**
 
 ```bash
-terrad tx gov submit-proposal software-upgrade <name> \
+jmesd tx gov submit-proposal software-upgrade <name> \
     --title=<title> \
     --description=<description> \
     --upgrade-height=<block-height> \
@@ -1179,14 +1179,14 @@ terrad tx gov submit-proposal software-upgrade <name> \
 **Example**
 
 ```bash
-terrad tx gov submit-proposal software-upgrade v0.5.0-beta3 \
+jmesd tx gov submit-proposal software-upgrade v0.5.0-beta3 \
     --title="Upgrade to v0.6.0-beta3" \
     --description="let's upgrade to v0.6.0-beta3" \
     --upgrade-height=20 \
-    --upgrade-info='{"binaries":{"darwin/amd64":"/Workspace/terra/core/build/terrad?checksum=sha256:2032356fe0899dec0cdd559f1c649bc81e53a9b4063b333059135e3a2aae8728"}}' \
+    --upgrade-info='{"binaries":{"darwin/amd64":"/Workspace/jmes/core/build/jmesd?checksum=sha256:2032356fe0899dec0cdd559f1c649bc81e53a9b4063b333059135e3a2aae8728"}}' \
     --type="Text" \
-    --deposit="50000000uluna" \
-    --from=terra13a8ddv3h7kbcn73akcbpe7ueks22vaolewpaxmb \
+    --deposit="50000000ubjmes" \
+    --from=jmes13a8ddv3h7kbcn73akcbpe7ueks22vaolewpaxmb \
     --chain-id=phoenix-1
 ```
 
@@ -1195,23 +1195,23 @@ To cancel a software upgrade:
 **Syntax**
 
 ```bash
-terrad tx gov submit-proposal cancel-software-upgrade --title "<title>" --description "<description>"
+jmesd tx gov submit-proposal cancel-software-upgrade --title "<title>" --description "<description>"
 ```
 
 **Example**
 
 ```bash
-terrad tx gov submit-proposal cancel-software-upgrade --title "Upgrade to v0.5.0-beta3" --description "let's upgrade to v0.6.0-beta3"
+jmesd tx gov submit-proposal cancel-software-upgrade --title "Upgrade to v0.5.0-beta3" --description "let's upgrade to v0.6.0-beta3"
 ```
 
 ## `tx gov vote`
 
-After a proposal's deposit reaches the `MinDeposit` value, the voting period begins, and bonded Luna holders can vote.
+After a proposal's deposit reaches the `MinDeposit` value, the voting period begins, and bonded bJMES holders can vote.
 
 **Syntax**
 
 ```bash
-terrad tx gov vote \
+jmesd tx gov vote \
     <proposal-id> <vote-type> \
     --from=<name> \
     --chain-id=<chain_id>
@@ -1220,9 +1220,9 @@ terrad tx gov vote \
 **Example**
 
 ```bash
-terrad tx gov vote \
+jmesd tx gov vote \
     7 yes \
-    --from=terra13a8ddv3h7kbcn73akcbpe7ueks22vaolewpaxmb \
+    --from=jmes13a8ddv3h7kbcn73akcbpe7ueks22vaolewpaxmb \
     --chain-id=phoenix-1
 ```
 
@@ -1233,13 +1233,13 @@ Releases a jailed validator.
 **Syntax**
 
 ```bash
-terrad tx slashing unjail
+jmesd tx slashing unjail
 ```
 
 **Example**
 
 ```bash
-terrad tx slashing unjail
+jmesd tx slashing unjail
 ```
 
 ## `tx staking create-validator`
@@ -1249,9 +1249,9 @@ Creates a new validator that is initialized with a self-delegation.
 **Syntax**
 
 ```bash
-terrad tx staking create-validator \
-    --amount=<uluna-amount> \
-    --pubkey=$(terrad tendermint show-validator) \
+jmesd tx staking create-validator \
+    --amount=<ubjmes-amount> \
+    --pubkey=$(jmesd tendermint show-validator) \
     --moniker="<moniker>" \
     --website="<validator-website>" \
     --identity="<keybase-identity>" \
@@ -1271,13 +1271,13 @@ Delegates an amount of liquid coins from your wallet to a validator.
 **Syntax**
 
 ```bash
-terrad tx staking delegate <validator-address> <amount>
+jmesd tx staking delegate <validator-address> <amount>
 ```
 
 **Example**
 
 ```bash
-terrad tx staking delegate terravaloper1l2rsakp388kuv9k8qzq6lrm9taddae7fpx59wm 2500stake
+jmesd tx staking delegate jmesvaloper1l2rsakp388kuv9k8qzq6lrm9taddae7fpx59wm 2500stake
 ```
 
 ## `tx staking edit-validator`
@@ -1287,7 +1287,7 @@ Edits an existing validator account.
 **Syntax**
 
 ```bash
-terrad tx staking edit-validator \
+jmesd tx staking edit-validator \
     --moniker="<moniker>" \
     --details="<validator-optional-details>" \
     --commission-rate="commission-rate>" \
@@ -1301,13 +1301,13 @@ Redelegates an amount of illiquid staking tokens from one validator to a differe
 **Syntax**
 
 ```bash
-terrad tx staking redelegate <from-validator-address> <to-validator-address> <amount>
+jmesd tx staking redelegate <from-validator-address> <to-validator-address> <amount>
 ```
 
 **Example**
 
 ```bash
-terrad tx staking redelegate terravaloper1gghjut3ccd8ay0zduzj64hwre2fxs9ldmqhffj terravaloper1l2rsakp388kuv9k8qzq6lrm9taddae7fpx59wm 350stake
+jmesd tx staking redelegate jmesvaloper1gghjut3ccd8ay0zduzj64hwre2fxs9ldmqhffj jmesvaloper1l2rsakp388kuv9k8qzq6lrm9taddae7fpx59wm 350stake
 ```
 
 ## `tx staking unbond`
@@ -1317,13 +1317,13 @@ Unbonds an amount of bonded shares from a validator.
 **Syntax**
 
 ```bash
-terrad tx staking unbond <validator-address> <stake-amount>
+jmesd tx staking unbond <validator-address> <stake-amount>
 ```
 
 **Example**
 
 ```bash
-terrad tx staking unbond terravaloper1gghjut3ccd8ay0zduzj64hwre2fxs9ldmqhffj 600stake
+jmesd tx staking unbond jmesvaloper1gghjut3ccd8ay0zduzj64hwre2fxs9ldmqhffj 600stake
 ```
 
 ## `tx wasm clear-admin`
@@ -1333,7 +1333,7 @@ Removes the contract admin so that the contract cannot be migrated.
 **Syntax**
 
 ```bash
-terrad tx wasm clear-admin <contract-address>
+jmesd tx wasm clear-admin <contract-address>
 ```
 
 ## `tx wasm execute`
@@ -1343,7 +1343,7 @@ Invokes processing functions on the smart contract.
 **Syntax**
 
 ```sh
-terrad tx wasm execute <contract-address> <handle-msg> <coins>
+jmesd tx wasm execute <contract-address> <handle-msg> <coins>
 ```
 
 Where `<handle-msg>` is a raw JSON string containing the `HandleMsg` that is parsed and routed to the correct message handling logic in the contract, and `<coins>` is the optional amount of coins specified in a comma-separated list that you want to send with your message, in case the logic requires some fees.
@@ -1355,7 +1355,7 @@ Creates a new contract by referencing the code ID of a contract that has been up
 **Syntax**
 
 ```sh
-terrad tx wasm instantiate <code-id> <init-msg> <coins>
+jmesd tx wasm instantiate <code-id> <init-msg> <coins>
 ```
 
 where `<init-msg>` is a JSON string containing the `InitMsg` to initialize your contract's state, and `<coins>` is the optional amount of coins specified in a comma-separated list that you want to send to the new contract account.
@@ -1363,7 +1363,7 @@ where `<init-msg>` is a JSON string containing the `InitMsg` to initialize your 
 **Example**
 
 ```sh
-terrad tx wasm instantiate 1 '{"arbiter": "terra~~"}' "1000000uluna"
+jmesd tx wasm instantiate 1 '{"arbiter": "jmes~~"}' "1000000ubjmes"
 ```
 
 ## `tx wasm migrate`
@@ -1373,13 +1373,13 @@ Updates the code ID of the contract to migrate to a new code ID. This command ca
 **Syntax**
 
 ```sh
-terrad tx wasm migrate <contract-address> <new-code-id> <migrate-msg>
+jmesd tx wasm migrate <contract-address> <new-code-id> <migrate-msg>
 ```
 
 **Example**
 
 ```sh
-terrad tx wasm migrate terra... 10 '{"verifier": "terra..."}'
+jmesd tx wasm migrate jmes... 10 '{"verifier": "jmes..."}'
 ```
 
 ## `tx wasm store`
@@ -1389,7 +1389,7 @@ Uploads a new WASM binary or migrates to existing binary to the phoenix-1 releas
 **Syntax for a new WASM binary**
 
 ```sh
-terrad tx wasm store <path-to-wasm-file>
+jmesd tx wasm store <path-to-wasm-file>
 ```
 
 where `<path-to-wasm-file>` is the path of a file that is the compiled binary of the smart contract code that you want to upload.
@@ -1401,5 +1401,5 @@ Updates a contract owner to a new address. This command can be issued only from 
 **Syntax**
 
 ```sh
-terrad tx wasm update-admin <contract-address> <new-owner>
+jmesd tx wasm update-admin <contract-address> <new-owner>
 ```

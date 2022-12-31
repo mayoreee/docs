@@ -4,11 +4,11 @@ import Admonition from '@theme/Admonition';
 
 <Admonition type="info" icon="ℹ️">
 
-Terra's staking module inherits from the Cosmos SDK's [`staking`](https://docs.cosmos.network/master/modules/staking/) module. This document is a stub and mainly covers important Terra-specific notes on how it is used.
+JMES's staking module inherits from the Cosmos SDK's [`staking`](https://docs.cosmos.network/master/modules/staking/) module. This document is a stub and mainly covers important JMES-specific notes on how it is used.
 
 </Admonition>
 
-The staking module enables Terra's proof-of-stake functionality by requiring validators to bond Luna, the native staking asset.
+The staking module enables JMES's proof-of-stake functionality by requiring validators to bond Luna, the native staking asset.
 
 ## Message types
 
@@ -153,7 +153,7 @@ type Params struct {
 }
 ```
 
-The genesis parameters for the staking module outlined in the [Genesis Builder Script](https://github.com/terra-money/genesis-tools/blob/main/src/genesis_builder.py#L132) are as follows:
+The genesis parameters for the staking module outlined in the [Genesis Builder Script](https://github.com/jmesworld/genesis-tools/blob/main/src/genesis_builder.py#L132) are as follows:
 
 ```py
     # Staking: change bond_denom to uluna and max validators to 130
