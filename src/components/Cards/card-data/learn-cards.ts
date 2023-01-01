@@ -2,11 +2,11 @@ import { CardProps } from '../Card';
 
 const learnCards: CardProps[] = [
   {
-    href: '/learn/protocol/#what-is-terra',
+    href: '/learn/about/blockchain/',
     lightSVG: '/img/icons/terra.svg',
     darkSVG: '/img/icons/dark/terra.svg',
     header: 'What is JMES?',
-    summary: 'Learn how JMES works.'
+    summary: 'Learn how the JMES protocol works.'
   },
   /*
   {
@@ -17,14 +17,30 @@ const learnCards: CardProps[] = [
     summary: 'Create a wallet and stake JMES for rewards.'
   },*/
   {
-    href: '/learn/protocol/#what-is-luna',
+    href: '/learn/about/whitepaper/',
+    lightSVG: '/img/icons/Glossary.svg',
+    darkSVG: '/img/icons/dark/Glossary.svg',
+    header: 'JMES Whitepaper',
+    summary: 'Read the JMES Blockchain Whitepaper.'
+  },
+  {
+    href: '/learn/app/',
+    lightSVG: '/img/icons/Glossary.svg',
+    darkSVG: '/img/icons/dark/Glossary.svg',
+    header: 'JMES App',
+    summary: 'Create a username and wallet account on the JMES blockchain'
+  },
+  /*
+  {
+    href: '/learn/about/blockchain/#what-is-luna',
     lightSVG: '/img/icons/luna.svg',
     darkSVG: '/img/icons/dark/luna.svg',
     header: 'What is bJMES?',
     summary: 'Learn about bJMES.'
   },
+  */
   {
-    href: '/learn/protocol/#validators',
+    href: '/learn/about/blockchain/#validators',
     lightSVG: '/img/icons/core/staking.svg',
     darkSVG: '/img/icons/dark/staking.svg',
     header: 'Validators and Staking',

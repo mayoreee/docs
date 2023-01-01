@@ -1,0 +1,161 @@
+import Admonition from '@theme/Admonition';
+import ThemedImage from '@theme/ThemedImage';
+
+# JMES Whitepaper
+
+Authors: Andy Freer, Alex Werner, Julian Schwartz
+
+<Admonition type="tip" icon="💡" title="Contributing">
+
+This document is sourced from the JMES World Github. For contributing, please use the [Github version](https://github.com/jmesworld/whitepaper/blob/main/jmes-coin-whitepaper.md).
+
+</Admonition>
+
+# 1 Introduction
+
+JMES is an open-source Application-Specific blockchain created to power JMES World, a decentralized community for art, with the goal of becoming the world's largest decentralized art ecosystem.
+
+Based on the [Cosmos SDK](https://v1.cosmos.network/sdk) and connected to Cosmos Hub (IBC), a validator-based blockchain secured using [Tendermint](https://tendermint.com/static/docs/tendermint.pdf) consensus provides the native JMES token (symbol: JMES) for use as a currency for art.
+
+JMES functions as a global decentralized brand, through the implementation of a decentralized core team offering solutions to the network for the overall management and funding of the contributors developing and working on the project.
+
+A business layer enables anyone to kickstart new ideas to grow JMES using funding from the blockchain, as well as the option to act in an Official capacity, by creating sub-DAOs (Decentralized Autonomous Organizations) within the Governance and funding system.
+
+The design of JMES is to deliver an economic solution to the problem of centralization in the art industry, in the form of a fully incentivized ecosystem where art consumers and producers can form a circular economy and use JMES to secure ownership, incentives and rights to all the Artworks produced both physical and digital.
+
+This is needed to enable JMES to scale as a decentralized global application using free-market principles to explore and deliver the right incentive and business models to grow its userbase.
+
+JMES has a max supply of 1,000,000,000 tokens and 19 decimal units called Nils, a blocktime of around 5 seconds, an initial block reward of 20 JMES, and a reduction schedule of 12.62079466% every 12 months.
+
+The JMES blockchain is governed by a set of System Smart Contracts detailed below.
+
+
+# 2 Consensus
+
+## 2.1 Validators
+
+To ensure fairness and security of the protocol we implement the JMES Protocol using a Proof-Of-Stake consensus algorithm which determines the weight of validators in the P2P network by the amount of staked JMES used as collateral.
+
+To be a validator candidate, the operator needs to broadcast a specific create\_ validator message to the network. The selection of the active validators is then made based on the weight of their stake. The active validator set is limited to 125 at the protocol level, and chosen by the largest amount of stake (including delegated stake). Losing staked coins and falling out of the top 125 rank or being disconnected from the network sets the validator to inactive and it loses its spot in the active set, no longer participating in consensus or earning rewards.
+
+The selected validator of the active validator set will produce the block and earn 50% of the block reward, with the other 50% being sent directly to the wallets of the DAOs with winning proposals in the system, any unused allocation isn't created.
+
+Note that in terms of distribution, at no time are newly created coins held in custody either by an individual wallet or a smart contract. Rather, newly created coins are always distributed directly to the recipient, e.g. validators, delagators or DAOs.
+
+## 2.2 Delegation
+
+Any holder of JMES tokens can delegate their JMES to a running validator, by bonding an amount of JMES in their own wallet. The block reward is split proportionally across all delegators, with the coins created whenever those delegators redeem them individually.
+
+For the cost of running the validator, the validator operator can define a commission rate that would be charged to delegators, which will become active after the first 28 day initial distribution period (see below).
+
+A validator can also self-delegate.
+
+## 2.3 Initial Distribution
+
+The Initial distribution of JMES is achieved with a completely fair launch where anyone can setup a validator to compete to mine JMES. This means there is no central authority to issue any JMES coins, no ICO, premine or unfair advantage to any party who may engage with the protocol.
+
+The code for JMES is fully open-source under MIT/Apache2 license and will be published on Github ready for anyone to compile and instantiate the first validator that will then mine the first block and effectively launch the JMES Network.
+
+At launch, because JMES isn't available to stake into new validators, and to mitigate attacks to game the validator set at low cost, an initial distribution period of 483 840 blocks (~28 days) is implemented from genesis where a second token is used for staking instead, which is ATOM (the native token of Cosmos).
+
+The ATOM stake is only used to provide weight to validators and is not burned or transferred within the system.
+
+Validator's commission will only activate at the end of this 483 840 blocks period (resulting in a 0% effective commission rate for the first 28 days).
+
+As a Cosmos compatible blockchain, JMES can be exchanged for other cryptocurrencies using existing Cosmos compatible Dexes (decentralized exchanges) from the first block. The initial JMES source code developers will not provide any direct exchange services but intend to integrate one or more 3rd party exchange services into the client wallet.
+
+During this initial distribution period of 483 840 blocks, the DAO rewards portion of block rewards (5,259,600 JMES) aren't created as DAOs can only be created when that period ends.
+
+Instead, all DAO rewards are apportioned for creation by any DAOs that in future will occupy Core DAO slots, to use specifically for team Incentives. Any DAO that's voted into one of the three Core Slots receives one third of these coins paid progressively over a ~4 year period (25,246,080 blocks) starting after the ~28 day initial distribution. If a DAO is removed from a Core Slot it won't receive further rewards during the ~4 year period, and if another DAO is voted to replace a DAO in a Core Slot, that DAO will receive the rewards during that period.
+
+Note that there is not facility at the base layer to engage in any kind of brokerage between JMES tokens and other assets.
+
+# 3 Identities
+
+## 3.1 User Identities
+
+To make it easier for people to interact socially in JMES we add user identity profiles so that anyone can sign up with a unique username on the blockchain, that includes an optional non-unique full name, and an extensible HD pub key for transaction purposes.
+
+## 3.2 DAO Identities
+
+DAOs in JMES are special Identities that users with user identities can create, that represent essentially a project or business built on the JMES blockchain, that the community can vote to allocate a share of block reward, official feature access, and official status to.
+
+Creating a DAO involves collecting the cryptographic addresses of the user identities that will control the DAO and assign a voting power to each address and a threshold that is required to pass a proposal. This key-value pair list gets sent to the DAO system smart contract which then instantiates a copy of the DAO code and assigns the new DAO its own wallet address.
+
+A name for the DAO must be provided on creation that is unique across both the DAO and user identity name spaces, to make it easier to identify and find them in the network, but not allow spoofing by duplicate usernames.
+
+The structure is that anyone of the above participant addresses can create a new Proposal for the DAO, then each address can vote according to the voting power, and the Proposal will pass or fail according to the predetermined threshold.
+
+# 4 Governance
+
+## 4.1 Proposals
+
+When creating any proposal, a DAO must burn an amount of [10] JMES to send the proposal to the GSC (Governance System Contract). .
+
+The maximum funding that each DAO can request in a cycle is [20%] of the total DAO budget.
+
+Note that the % of the total budget for Core DAOs is capped at [40%] of the total DAO budget (so 20% of total block rewards). This means that if the combined ask (amount requested in proposals) of the Core DAO's exceeds the [40%] cap on the total DAO budget, the Core DAO proposals with the lowest votes that exceed that amount won't be funded.
+
+## 4.2 Cycle
+
+New proposals can be submitted within odd weeks in the calendar year (for example week #1, week #3 etc.) but not in even weeks (for example week #2, week #4 etc.).
+
+Voting can only occur in even weeks, with the results tallied at midnight UTC on the last day of the even week in question. This means that a minimum of 8 days is required to create a proposal and have it voted in.
+
+Note that proposal cycles are calculated based on time, every other calculation uses block height.
+
+## 4.3 Voting
+
+Any JMES token holder can vote on any proposal if they have the minimum stake of [1000] JMES. Voting requires the JMES to be bonded for a validator in the user's own wallet, meaning those JMES are marked with a special status as unspendable and only usable for the purpose of tallying them for voting and derivation of staking rewards from the validator they're bonded to. Bonded coins remain in the owner's wallet at all times and are never transmitted or under the control of another wallet.
+
+Unbonding tokens from bJMES back to JMES has a delay of [21] days during which time they can't be used for voting or earning staking rewards, however, bonding is instant.
+
+For proposals relating to Core DAO slots, if multiple competing proposals for a slot are made within a cycle, the proposal with the highest absolute yes votes passes. If there isn't a single highest absolute yes vote then none of the relevant DAO proposals passes within that cycle.
+
+## 4.4 Funding / Rewards / Distribution Contract
+
+Each DAO is enabled to post a proposal to the Governance System Contract (GSC) to request permission to issue new coins to themselves within their own wallet, from within the 50% of total block rewards available across all winning DAO proposals, by including the start-block and the end-block and the funding amount over that period (in JMES).
+
+For example, a DAO wants to be able to allocate themselves 1000 new JMES tokens between block 300 and 800 out of the total DAO block reward budget.
+
+This means that they can request to create this allocation of new JMES coins to their own wallet via the Distribution System Contract (DSC) at any block height between the block start and end and will be able to create those coins at the moment the proportional amount has matured, and at 800 they have created 100% of the amount requested.
+
+## 4.5 System Features
+
+Each DAO can request official features via a proposal to the GSC smart contract. Features include becoming an official artist curator, an official art dealer, an official event and club organizer.
+
+The blockchain will store the feature for the requesting DAO and enable access, for example, minting and revoking official JMES NFTs as part of the official artist curator feature.
+
+## 4.6 Official Status
+
+Each DAO can request official status (represented as a blue checkmark) via a proposal to the GSC. This is purely a feature that's used in business-to-business communication to ensure that the majority of JMES network stakeholders approve for the DAO to represent the decentralized JMES brand officially.
+
+## 4.7 Core Slots
+
+The protocol allows for 3 DAOs to be elected into "Core Slots", allowing those DAOs to work together and provide certain "official" functions for the JMES network, but at the same time be accountable and replaceable by the Network at all times.
+
+The name of the 3 Core Slots are as follows:
+
+ 1. Brand, Marketing & Communications
+
+2. Creative Technology
+
+3. Engineering
+
+Each DAO can request via the GSC to be assigned one of the Core Slots, but each DAO can only be in one of the Core Slots at any given time.
+
+If a Core Slot is taken, a new DAO being approved into a Core Slot via the Governance system will automatically replace the current DAO in that slot.
+
+If two or more DAOs apply for the same Core Slot in the same voting period, the one with the highest absolute YES vote count wins.
+
+After voting on Core Slots, the winning DAO also has to formally accept its appointment during the acceptance period after the voting has ended, via the GSC.
+
+The core slot does not automatically come with funding. For funding the DAO needs to create a separate funding proposal.
+
+## 4.8 Decision Proposals
+
+Each DAO can raise a text proposal via the GSC to act as a non-binding (at protocol level) survey of questions to the Network.
+
+## 4.9 Improvement Proposals
+
+Only the DAO assigned to the Engineering Core Slot can propose code migration changes to the Governance System Smart Contracts. The code changes need to be approved by the general election during the voting period. If the proposal is successful, the code upgrade will automatically be performed upon conclusion of the proposal. If they are not approved, the code update will not be executed. Any DAO can suggest changes via a text proposal which the Engineering Core Slot DAO can integrate into an Improvement Proposal and any DAO can propose to claim the Engineering Core Slot.

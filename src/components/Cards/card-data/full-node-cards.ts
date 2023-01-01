@@ -6,7 +6,7 @@ const fullNodeCards: CardProps[] = [
     lightSVG: '/img/icons/node.svg',
     darkSVG: '/img/icons/dark/node.svg',
     header: 'Run a full node',
-    summary: 'Configure and manage a full Terra node.'
+    summary: 'Configure and manage a full JMES node.'
   },
   {
     href: '/full-node/run-a-full-terra-node/join-a-network.html',
