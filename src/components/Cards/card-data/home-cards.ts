@@ -2,12 +2,20 @@ import { CardProps } from '../Card';
 
 const homeCards: CardProps[] = [
   {
+    href: '/learn/about.html',
+    lightSVG: '/img/icons/terra.svg',
+    darkSVG: '/img/icons/dark/terra.svg',
+    header: 'Learn about JMES',
+    summary: 'Learn about JMES, rewards, staking, and governance.'
+  },
+  {
     href: '/develop/get-started.html',
     lightSVG: '/img/icons/buildanapp02.svg',
     darkSVG: '/img/icons/dark/buildanapp02.svg',
     header: 'Start building',
     summary: 'Click here to learn how to build on JMES.'
   },
+  /*
   {
     href: '/learn/terra-station.html',
     lightSVG: '/img/icons/station/station.svg',
@@ -15,6 +23,7 @@ const homeCards: CardProps[] = [
     header: 'Get started with Station',
     summary: 'Create a wallet and stake JMES for rewards.'
   },
+  */
   {
     href: '/develop/which-tools.html',
     lightSVG: '/img/icons/buildanapp01.svg',
@@ -22,6 +31,7 @@ const homeCards: CardProps[] = [
     header: 'Tool guide',
     summary: 'Not sure which tools to use? Start here.'
   },
+  /*
   {
     href: '/develop/terrain/mint-an-nft.html',
     lightSVG: '/img/icons/mintnft.svg',
@@ -29,12 +39,13 @@ const homeCards: CardProps[] = [
     header: 'Mint an NFT',
     summary: 'Follow the minting tutorial to mint your own NFT.'
   },
+  */
   {
-    href: '/learn/protocol.html',
-    lightSVG: '/img/icons/terra.svg',
-    darkSVG: '/img/icons/dark/terra.svg',
-    header: 'Learn about JMES',
-    summary: 'Learn about JMES, rewards, staking, and governance.'
+    href: '/full-node/run-a-full-terra-node',
+    lightSVG: '/img/icons/node.svg',
+    darkSVG: '/img/icons/dark/node.svg',
+    header: 'Run a full node',
+    summary: 'Configure and manage a full JMES node.'
   },
 ]
 
