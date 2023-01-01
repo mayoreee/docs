@@ -39,7 +39,7 @@ const homeCards: CardProps[] = [
     header: 'Mint an NFT',
     summary: 'Follow the minting tutorial to mint your own NFT.'
   },
-  */
+
   {
     href: '/full-node/run-a-full-terra-node',
     lightSVG: '/img/icons/node.svg',
@@ -47,6 +47,7 @@ const homeCards: CardProps[] = [
     header: 'Run a full node',
     summary: 'Configure and manage a full JMES node.'
   },
+  */
 ]
 
 export default homeCards;
