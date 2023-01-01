@@ -2,3 +2,73 @@ import Admonition from '@theme/Admonition';
 import ThemedImage from '@theme/ThemedImage';
 
 # JMES Business Layer
+
+## 1 Introduction
+
+The business layer consists of a unique and custom built layer of System Smart Contracts that enable the identities, daos, governance, funding and Official features of the JMES blockchain as described in the Whitepaper.
+
+## 2 Identity service
+
+The extensible identity service is built from scratch and provides the ability to register validated, human-readable names for 1. User identities and 2. Dao identities. Both, Users and Daos, share the same namespace to protect impersonation attacks. Identities can be resolved via bi-directional lookup: A wallet address can be resolved into a name and a name can be resolved into a wallet address. It also allows you to retrieve a paginated list of all existing daos.
+
+## 3 DAOs
+
+The DAO (Decentralized Autonomous Organization) System Smart Contracts (dao-multisig and dao-members) are based on the cw3-flex and cw4-group interfaces and are extended to be tightly coupled to the identity service and governance contracts. The result is that a multisig smart contract based on a percentage of voting power is instantiated during the dao's name registration by the identity service, that can update its own membership, voting power per member, voting threshold and is the only legal actor in the JMES Ecosystem that can post proposals to the governance contract.
+
+## 4 Governance
+
+The advanced governance system is designed and built from scratch and based on many years of experience with decentralized governance systems. It includes community-driven funding directly from the blockchain, is fully decentralized and addresses most social engineering issues of older governance systems through three major features:
+
+## 4.1 Cadence
+
+The governance system is aware of a proposal posting and a voting period, which together constitute the governance cadence. At launch the cadence will be 4 weeks, split in an equal 2 week proposal posting and 2 week voting period. In practice this means that in Calendar week 1 and 2, all DAOs are free to post their proposals. As week 2 ends, posting is disabled and no new proposals can sneak in for the following two weeks. Calendar week 3 and 4 are reserved for holders of voting rights to review the proposals and cast their votes. This system lowers cognitive load of every participating actor to increase participation, but especially of voting rights holders that don't need to be on guard looking for new proposals coming in at the last minute and getting voted-in without a proper vetting process. Voting Rights holders can know when the voting periods start and ends, and don't need to be concerned that a malicious actor is staging a take-over while they are on vacation.
+
+## 4.2 Predefined Proposal Templates
+
+The governance system recognizes predefined proposal templates. These make it easier for voting rights holders to review and audit the proposals, since they are already guarded by the smart contract against containing malicious code and it is well established which features each proposal can request. The templates are:
+
+- Improvement Proposal
+- Funding Proposal
+- Decision Proposal
+- Request Feature Proposal
+- Request Core Slot Proposal
+
+## 4.3 Decentralizing DAO Financial Control
+
+Historically there is a problem inherent in DAO models where a single user controls the private keys for the wallet holding the DAO's funding. It usually leads to a dictatorial arrangement where the incentives in the DAO are aligned around sustaining the individual controlling that wallet rather than the interests of the DAO or the network it's serving. This is in contrast to even corporate models where boards of directors and shareholders have some elements of say in the control and spend of the organizations funding.
+
+To counter this at a protocol-level, DAOs in JMES are always set up as a multisig wallet and require at least two signatures/members for funds to be spent, proposals to be posted or any DAO decision to be made. In JMES, only these multisig DAOs are able to receive network funding.
+
+Funding is requested based on a defined amount and time period, with the funding being paid out linearly over the requested time period e.g. if 1000 JMES are requested over a period of 3 months, 500 JMES would be paid out after 1.5 months.
+
+## 5 Core Slots
+
+The business layer contains a special type of DAO known as a "Core Slots". The protocol allows upypo three DAOs to "occupy" the Core slots through a special proposal type that requests it. The slot grants the DAO special permissions in the network.
+
+A DAO can voluntarily step down from a slot at any moment (which also serves as a deterrent from being pressured into acting a certain way). Another DAO can request the same slot and if the proposal passes, replace the previous DAO and take over the slot. If two or more DAOs win the slot in the same proposal cycle, the DAO with the highest yes-vote-ratio will win the slot.
+
+The Engineering slot grants the DAO that holds it the special permission to post improvement proposals to the governance smart contract and is analogous to a traditionalrole of a Core dev team, but improved so that the community can control who is in that position, fund them directly from the blockchain and govern their output at a protocol level.
+
+Improvement proposals are the only proposals that are allowed to have arbitrary code attached to them, that will be executed by Validators and can be used to update (migrate) the smart contract code and data storage. Other projects have been attacked in the past by malicious code in proposals, so having a two step governance system (1. Request Core Tech Slot, 2. Propose Code Changes) is a solid protection against this scenario. There are also core slots for "Brand, Marketing & Communications" and "Creative Technology".
+
+## 6 Voting Rights
+
+Voting Rights are required to participate in the governance system and vote on proposals. Voting Rights are granted when JMES tokens are staked (=delegated) to a validator. Staking tokens provides network security and are an essential service to support the JMES ecosystem. Once the JMES tokens are unstaked, the voting rights are withdrawn. Unstaking the JMES tokens takes 14 days to guarantee the stability of the network. Using only staked JMES tokens as voting rights ensures only actors vote on proposals that are deeply invested in the network and care about it's long term success.
+
+## 7 Official Features
+
+Official Features constitute the "System Layer" of the JMES blockchain. They provide the framework for producers and consumers of art to interact and exchange value and intellectual property.
+
+## 7.1 Artist Curation
+
+DAOs can request to become an Artist Curator via a Request Feature proposal. This allows the DAO to mint Artist NFTs which they can send to Artists they want to hype. The holder of an Artist NFT can then mint official Art NFTs.
+
+## 8 Distribution
+
+The distribution contract receives 45% of the new coin issuance every block (so called "block reward") and transaction fees. This reserve is distributed to DAOs that succeed with a funding proposal via the governance system. The grant amount is paid out linearly over the time period requested in the funding proposal.
+
+Note that because of an updated legal opinion, distribution smart contract is in the process of being deprecated and instead the funding of wallet addresses provided in the winning proposals will be coupled directly to the minting of new coins on Layer 1.
+
+## 9 Smart Contraction Orchestration & Testing
+
+As part of the monorepo we ship a smart contract orchestration tool that makes the process of uploading the bytecode and instantiating the interdependent web of System Smart Contracts on different chains easier. Included is a typescript integration test suite powered by the mocha test framework that simulates real world user behavior by setting up a clean test fixture and interacting with the smart contracts in a natural user flow.

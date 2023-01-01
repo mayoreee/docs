@@ -2,7 +2,7 @@ import { CardProps } from '../Card';
 
 const homeCards: CardProps[] = [
   {
-    href: '/learn/about.html',
+    href: '/learn/',
     lightSVG: '/img/icons/terra.svg',
     darkSVG: '/img/icons/dark/terra.svg',
     header: 'Learn about JMES',
