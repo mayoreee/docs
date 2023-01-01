@@ -5,7 +5,7 @@ const learnCards: CardProps[] = [
     href: '/learn/about/blockchain/',
     lightSVG: '/img/icons/terra.svg',
     darkSVG: '/img/icons/dark/terra.svg',
-    header: 'What is JMES?',
+    header: 'JMES Blockchain',
     summary: 'Learn how the JMES protocol works.'
   },
   /*
