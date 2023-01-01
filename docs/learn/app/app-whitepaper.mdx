@@ -1,0 +1,122 @@
+import Admonition from '@theme/Admonition';
+import ThemedImage from '@theme/ThemedImage';
+
+# JMES App Whitepaper
+
+Authors: Andy Freer, Namito Khalaj, Simon Zimmermann
+
+<Admonition type="tip" icon="💡" title="Contributing">
+
+This document is sourced from the JMES World Github. For contributing, please use the [Github version](https://github.com/jmesworld/whitepaper/blob/main/jmes-app-whitepaper.md).
+
+</Admonition>
+
+# 1 Introduction
+
+JMES App is an open-source social Art sharing & trading platform that connects Artists directly with Art enthusiasts via the JMES Blockchain.
+
+The App enables Artists to tokenize physical and digital artworks that are minted onto the JMES blockchain for sale in whole or in fractions at a price set by the Artist.
+
+Users can browse Artist's content and buy shares of each Artwork via NFTs that are added to their own Collection, visible publicly by default.
+
+Users can buy shares in the Artworks listed in other user's Collections, or in the whole Collection itself, which then earns them a proportional return on future sales and revenue from the Collection.
+
+Users can browse Art by Artists or Collections of other users by tag or location, view trending Art and see recommended Art personalized to their discovery and interaction history.
+
+Users can follow Artists and/or subscribe for a fee (Patronage) to receive exclusive content, pre-drops, allow-list access on drops and direct connection to the Artist via DM and access to Live streams they can create. Users can also buy shares in future Artworks they create.
+
+By default, the value of all individual Artworks, Artists and Collections is public (and investable via shares) to all users.
+
+Artists also earn rewards (paid automatically in JMES Coins) from various user Actions and Interactions, such as Viewing Artworks, Liking, Sharing and Follows by users. The payout will come from the blockchain. The allocation of these funds will be based on the engagement of users on the platform. It will reward content that will be relevant for the users.
+
+The platform is open to anyone to become an Artist and mint their Art, however, moderators appointed by the community work to ensure that only original works are being minted and compliance with legal requirements in the user's local jurisdiction plus the ability for users to flag content for Moderator review.
+
+The App also integrates a Cryptocurrency Wallet for JMES Coin that enables all transactions on Artworks or Interactions within the App to be priced, remitted and settled in JMES without the need for trust in centralized intermediaries or fiat payments. However, users can optionally use integrated 3rd party broker services to exchange their JMES tokens with fiat currencies within the Wallet interface.
+
+JMES app is the ultimate tool to utilize an independent, permissionless and trustless art based economy, backed by decentralized JMES blockchain. The ecosystem is based on a user (both consumers/participants and artists) incentive model which encourages (via incentives) participants to interact with the network - join and contribute or consume. At the same time it is designed to scale the network in order to increase the value of JMES coin.
+
+Through our consumption-based revenue model, artists are incentivized to create diverse content and share it with the world through the JMES app. Artists can now earn money not only by selling their artworks, but also by having their artworks clicked, consumed, and shared within the JMES community.
+
+After launching the digital Art offering, the roadmap of the JMES App is to add other forms of Art such as fashion, music and cultural experiences in future versions. Beside that, social and gamification functionalities are planned to be included which will add incentives to take part and experience the domain along with other users (ie. accomplish challenges, co-organize networking meetups), eventually providing them with different forms of exclusive content and/or additional JMES coins.
+
+The App is being developed by the JMES Core Team, a group of three DAOs on the JMES Blockchain elected, funded and governed by JMES Coin holders.
+
+# 2 Accounts
+
+To interact on the Platform user's must signup an Account, which represents a User Identity created on the JMES blockchain (a unique username with a wallet address; see the JMES Coin Whitepaper) accessed via a public social User Profile stored off-chain in the Platform, providing additional information and features for users to interact with such as a display name, profile picture and connections and social interactions with other users.
+
+## 2.1 User Identity
+
+The underlying User Identity for a user's Account in the App is represented by a unique username, an optional non-unique full name, and a public HD wallet address, all stored together on the JMES blockchain. It can be created when the App is installed or restored by entering an HD seed (or created directly on the blockchain by 3rd party tools).
+
+This means the user logs in to the app using this seed (that generates the private key encrypted locally on the device) and not by email or phone number. Therefore the App functions more like a crypto wallet than a traditional app where the user has to trust centralized service in this regard.
+
+The Private Key for the user's Identity is stored locally by the App on the user's device, enabling tight integration of monetization functions within the App, such as JMES NFT and Coin transfer / ownership, royalty payments from engagement, and signing any messages to prove the user's identity.
+
+For example, when sending JMES to another user in the App, the relevant addresses can be looked up and the transaction can be signed and broadcast securely in the background without the user needing to leave the App or understand the underlying crypto constructs involved, to provide a much easier and more intuitive user experience, and without the user needing to trust a 3rd party with their funds.
+
+## 2.2 Creator Status
+
+In the App there are 2 tiers of user Accounts: standard User Accounts and Creator Accounts, both represented on the JMES blockchain.
+
+Creators are a minority of users curated by the JMES community who are incentivized to create Artworks for the consumption and engagement of a wider base of Art consumers in that community (via the App or any 3rd party client of the JMES blockchain).
+
+Creator Accounts have the ability to mint Artworks on-chain via Official Artwork NFTs (from a System Contract; see the JMES Coin Whitepaper), that enable a number of shares to be defined, to enable fractional ownership and lower the barrier of entry to ownership of Artworks by users.
+
+Standard User Accounts consume Artworks by discovering, viewing and engaging with them via social interactions within the App, as well as buying / selling shares in them via the blockchain.
+
+Any User Account can apply to Upgrade their Account to a Creator Account within the App, which is handled by a Curator, who issues an Official Artist NFT to the User Identity on the blockchain, which is what enables the App to determine if an Account is a Creator Account or not.
+
+## 2.3 Contacting
+
+Every Account has the option to follow every other Account on the blockchain via the Platform, and when two accounts follow each other, this is known as Contacting..
+
+To enable Contacts to transact with each other trustlessly via the blockchain, whenever one account follows another, an HD extensible Pubkey from both User Identities is uploaded to the Platform's backend databases from their Apps, to enable private direct payments of JMES coins between those users, by deriving a new one-time address for each payment.
+
+The following-Account's App uploads this pubkey at the same time that the Follow request is made, and the Platform requests the followed Account's pubkey the next time it is online, regardless of whether the Account follows-back.
+
+Both pubkey's are encrypted for the other User Identity using their private keys before pubkey upload by each Account's App, meaning that only the two User Identities involved can decrypt the keys using their private keys, and anyone with internal access to the Platform's backend data cannot know either addresses of either Account.
+
+Note that whilst this level of privacy isn't bullet proof (there can still be types of chain-analysis to link the derived addresses back to a User Identity's funds with varying degrees of probability) it at least provides a basic level of privacy for users other than direct & certain tracing of transactions to a User Identity.
+
+# 3 Artworks
+
+An "Artwork" in JMES is a digital image or video representing a digital or physical work who's ownership is represented by an Official Artwork NFT on the JMES Blockchain. Anyone can create 3rd party NFTs such as CW721 or CW1155 compliant NFTs, but these aren't officially recognized in the Platform (although they can be migrated internally or from other blockchains via a Curator).
+
+Artworks can only be minted by holders of an Official Artist NFT, which can only be minted by a Curator (holders of an Official Curator NFT allocated via the Governance system; see the JMES Coin Whitepaper).
+
+In this regard the App works as an interface to the JMES blockchain in terms of asset creation and ownership, using the integrated wallet for the current User Identity; it doesn't store this information in it's own centralized backend, or have any exclusive ability to facilitate this process, so users can mint/buy and sell assets trustlessly via the App or any interface that integrates with the JMES blockchain protocol.
+
+## 3.1 Minting
+
+Artworks can be minted on the JMES blockchain via the App and include data for a Title, Genre and number of shares that will be allocated. A minimum selling price for the shares is set in the App during the minting process, along with a text description of the Artwork and an upload of an image/video for the Artwork which is stored in the App's backend (and later on IPFS).
+
+## 3.2 Transfer
+
+On the blockchain, transfer of ownership of a quantity of shares in Artworks is executed in the NFT Smart Contract for the Artwork between User Identities in exchange for a corresponding quantity of JMES.
+
+The owner optionally sets the sale price for the quantity of shares they own which enables buyers to execute the purchase and transfer ownership to themselves by transferring the relevant number of JMES coins to the smart contract. If a minimum price is not specified, the shares are considered not for sale at that time.
+
+Owners of Official Artwork NFT shares can also transfer ownership without an underlying transfer of JMES Coins at any time, i.e. for free, whether they have set a minimum price or not.
+
+User Identities who want to buy shares in the Artwork can create a Buy Order NFT for a set number of shares at a set price with the relevant JMES locked in the smart contract, that a seller can execute by calling the smart contract (with the share ownership transferred at that time within the contract)
+
+In the App, this order-based buying and selling is initiated by a "Make Offer" feature for a buy or sell order on the detail screen of the Artwork in question.
+
+The App also offers a feature to "Buy Now" or "Sell Now", which allows the user to bulk-execute buys or sells across all existing Buy Order NFTs or Artwork NFTs containing sell offers, with estimated total price calculated within the App.
+
+In this regard the blockchain provides a basic limit-order trading facility, which the App (or any 3rd party client) can use to effectively execute market-orders on the underlying NFT's buy and sell order data.
+
+## 3.3 Rights & Royalties
+
+Artists retain credits as the Original Artist of all Artworks they Mint, but various ownership options are offered on sales.
+
+Other options are offered for example retention of partial rights or commission on resales by the Original Artist.
+
+Ownership will give the owner the right to receive income from the Blockchain that is distributed among the content that is most consumed on the platform. This will all happen automatically.
+
+In terms of ownership, from a consensus perspective, ownership of a digital Artwork's shares is enforced by control of the private key of the owning User Identity.
+
+This control enables anyone to verify consensus ownership of Artworks using the blockchain without trusting a 3rd party.
+
+It also enables connected platforms to implement those rights in terms of interactions and monetization, and for anyone to trustlessly verify that those platforms are implementing those rights correctly or not.
