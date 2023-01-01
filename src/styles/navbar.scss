@@ -280,14 +280,3 @@
     }
   }
 }
-
-@media (max-width: 374px) {
-  .navbar__logo {
-    &::before {
-      content: url('/img/logo.png');
-    }
-    img {
-      display: none !important;
-    }
-  }
-}
