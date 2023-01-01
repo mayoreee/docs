@@ -32,7 +32,7 @@ const learnCards: CardProps[] = [
   },
   /*
   {
-    href: '/learn/protocol/#what-is-luna',
+    href: '/learn/about/blockchain/#what-is-luna',
     lightSVG: '/img/icons/luna.svg',
     darkSVG: '/img/icons/dark/luna.svg',
     header: 'What is bJMES?',
@@ -40,7 +40,7 @@ const learnCards: CardProps[] = [
   },
   */
   {
-    href: '/learn/protocol/#validators',
+    href: '/learn/about/blockchain/#validators',
     lightSVG: '/img/icons/core/staking.svg',
     darkSVG: '/img/icons/dark/staking.svg',
     header: 'Validators and Staking',
