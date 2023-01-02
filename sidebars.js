@@ -233,6 +233,24 @@ const sidebars = {
             'develop/module-specifications/spec-wasm',
           ],
         },
+        {
+          type: 'category',
+          label: 'Incubator',
+          collapsed: true,
+          link: { type: 'doc', id: 'develop/incubator/README' },
+          items: [
+            {
+              type: 'doc',
+              id: 'develop/incubator/README',
+              label: 'About Incubator',
+            },        
+            {
+              type: 'doc',
+              id: 'develop/incubator/incubator-whitepaper',
+              label: 'Whitepaper',
+            },                              
+          ],
+        },  
         'develop/resources',
         'develop/swagger',
         'develop/endpoints',
