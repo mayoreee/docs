@@ -9,6 +9,13 @@ const homeCards: CardProps[] = [
     summary: 'Learn about JMES, rewards, staking, and governance.'
   },
   {
+    href: '/develop/incubator/',
+    lightSVG: '/img/icons/mintnft.svg',
+    darkSVG: '/img/icons/dark/mintnft.svg',
+    header: 'Join JMES Incubator',
+    summary: 'Get funded to build on JMES.'
+  }, 
+  {
     href: '/develop/get-started.html',
     lightSVG: '/img/icons/buildanapp02.svg',
     darkSVG: '/img/icons/dark/buildanapp02.svg',
