@@ -6,17 +6,17 @@ import Admonition from '@theme/Admonition';
 
 # Configure general settings
 
-The following information describes the most important node configuration settings found in the `~/.terra/config/` directory. It is recommended that you update these settings with your own information.
+The following information describes the most important node configuration settings found in the `~/.jmes/config/` directory. It is recommended that you update these settings with your own information.
 
 <details> 
-<summary> Structure of `.terra/config` </summary>
+<summary> Structure of `.jmes/config` </summary>
 <p>
 
 ```bash
-~/.terra/config
+~/.jmes/config
 │-- addrbook.json                       # a registry of peers to connect to
-│-- app.toml                            # terrad configuration file
-│-- client.toml                         # configurations for the cli wallet (ex terracli)
+│-- app.toml                            # jmesd configuration file
+│-- client.toml                         # configurations for the cli wallet (ex jmescli)
 │-- config.toml                         # Tendermint configuration file
 │-- genesis.json                        # gensesis transactions
 │-- node_key.json                       # private key used for node authentication in the p2p protocol (its corresponding public key is the nodeid)
@@ -32,7 +32,7 @@ The following information describes the most important node configuration settin
 Initialize the node with a human-readable name:
 
 ```bash
-terrad init <your_custom_moniker> # ex., terrad init validator-joes-node
+jmesd init <your_custom_moniker> # ex., jmesd init validator-joes-node
 ```
 
 <Admonition type="caution" icon="☢️" title="Moniker characters">
@@ -41,16 +41,16 @@ Monikers can only contain ASCII characters. Using Unicode characters will render
 
 </Admonition>
 
-You can update your node's moniker by editing the `moniker` field in `~/.terra/config/config.toml`.
+You can update your node's moniker by editing the `moniker` field in `~/.jmes/config/config.toml`.
 
 ## Update minimum gas prices
 
-1. Open `~/.terra/config/app.toml`.
+1. Open `~/.jmes/config/app.toml`.
 
 2. Modify `minimum-gas-prices` and set the minimum price of gas a validator will accept to validate a transaction and to prevent spam.
 
 The recommended setting is:
-`minimum-gas-prices = "0.15uluna"`
+`minimum-gas-prices = "0.15ubJMES"`
 
 **Example**:
 
@@ -58,15 +58,15 @@ The recommended setting is:
 # The minimum gas prices a validator is willing to accept for processing a
 # transaction. A transaction's fees must meet the minimum of any denomination
 # specified in this config (e.g. 0.25token1;0.0001token2).
-minimum-gas-prices = "0.01133uluna"
+minimum-gas-prices = "0.01133ubJMES"
 
 ```
 
 ## Start the light client daemon (LCD)
 
-For information about the available Terra REST API endpoints, see the [Swagger documentation](https://phoenix-lcd.terra.dev/swagger/). To enable the REST API and Swagger, and to start the LCD, complete the following steps:
+For information about the available JMES REST API endpoints, see the [Swagger documentation](https://phoenix-lcd.jmes.dev/swagger/). To enable the REST API and Swagger, and to start the LCD, complete the following steps:
 
-1. Open `~/.terra/config/app.toml`.
+1. Open `~/.jmes/config/app.toml`.
 
 2. Locate the `API Configuration` section (`[api]`).
 
@@ -83,12 +83,12 @@ For information about the available Terra REST API endpoints, see the [Swagger d
 swagger = true
 ```
 
-5. Restart the service via `systemctl restart terrad`. Once restarted, the LCD will be available (by default on port `127.0.0.1:1317`).
+5. Restart the service via `systemctl restart jmesd`. Once restarted, the LCD will be available (by default on port `127.0.0.1:1317`).
 
 ## Set up `external_address` in `config.toml`
 
 In order to be added to the address book in seed nodes, you need to configure `external_address` in `config.toml`. This addition will prevent continuous reconnections. The default P2P_PORT is `26656`.
 
 ```sh
-sed -i -e 's/external_address = \"\"/external_address = \"'$(curl httpbin.org/ip | jq -r .origin)':26656\"/g' ~/.terra/config/config.toml
+sed -i -e 's/external_address = \"\"/external_address = \"'$(curl httpbin.org/ip | jq -r .origin)':26656\"/g' ~/.jmes/config/config.toml
 ```
