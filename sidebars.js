@@ -256,7 +256,6 @@ const sidebars = {
         'develop/endpoints',
       ],
     },
-    /*
     {
       type: 'category',
       label: 'Full node',
@@ -268,7 +267,6 @@ const sidebars = {
         },
       ],
     },
-    */
   ],
 };
 
