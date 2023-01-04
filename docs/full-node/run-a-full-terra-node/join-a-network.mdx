@@ -10,35 +10,35 @@ It is highly recommended that you set up a private local network before joining 
 
 ## Set up a local private network
 
-Validators can set up a private Terra network to become familiar with running a full Terra node before joining a public network.
+Validators can set up a private JMES network to become familiar with running a full JMES node before joining a public network.
 
 
-<Admonition type="tip" icon="💡" title="LocalTerra">
+<Admonition type="tip" icon="💡" title="LocalJMES">
 
-If you are a developer and want to set up a local, WASM-enabled, private testnet for smart contracts, visit [install LocalTerra](../../develop/localterra/README.mdx).
+If you are a developer and want to set up a local, WASM-enabled, private testnet for smart contracts, visit [install LocalJMES](../../develop/localterra/README.mdx).
 
 </Admonition>
 
 
 ### Create a single node
 
-The simplest Terra network you can set up is a local testnet with just a single node. In a single-node environment, you have one account and are the only validator signing blocks for your private network.
+The simplest JMES network you can set up is a local testnet with just a single node. In a single-node environment, you have one account and are the only validator signing blocks for your private network.
 
 1. Initialize your genesis file that will bootstrap the network. Replace the following variables with your own information:
 
    ```bash
-     terrad init --chain-id=<testnet-name> <node-moniker>
+     jmesd init --chain-id=<testnet-name> <node-moniker>
    ```
 
-2. Generate a Terra account. Replace the variable with your account name:
+2. Generate a JMES account. Replace the variable with your account name:
 
    ```bash
-   terrad keys add <account-name>
+   jmesd keys add <account-name>
    ```
 
 <Admonition type="tip" icon="💡" title="Get tokens">
 
-In order for Terrad to recognize a wallet address, it must contain tokens. For the testnet, use [the faucet](https://faucet.terra.money/) to send Luna to your wallet. If you are on mainnet, send funds from an existing wallet. 1-3 Luna are sufficient for most setup processes.
+In order for JMESd to recognize a wallet address, it must contain tokens. For the testnet, use [the faucet](https://faucet.terra.money/) to send bJMES to your wallet. If you are on mainnet, send funds from an existing wallet. 1-3 bJMES are sufficient for most setup processes.
 
 </Admonition>
 
@@ -47,24 +47,24 @@ In order for Terrad to recognize a wallet address, it must contain tokens. For t
 Run the following commands to add your account and set the initial balance:
 
 ```bash
-terrad add-genesis-account $(terrad keys show <account-name> -a) 100000000uluna
-terrad gentx <my-account> 10000000uluna --chain-id=<testnet-name>
-terrad collect-gentxs
+jmesd add-genesis-account $(jmesd keys show <account-name> -a) 100000000ubJMES
+jmesd gentx <my-account> 10000000ubJMES --chain-id=<testnet-name>
+jmesd collect-gentxs
 ```
 
-### Start your private Terra network
+### Start your private JMES network
 
 Run the following command to start your private network:
 
 ```bash
-terrad start
+jmesd start
 ```
 
-If the private Terra network is set up correctly, your Terrad node will be running on `tcp://localhost:26656`, listening for incoming transactions, and signing blocks.
+If the private JMES network is set up correctly, your JMESd node will be running on `tcp://localhost:26656`, listening for incoming transactions, and signing blocks.
 
 ## Join a public network
 
-These instructions are for setting up a brand new full node from scratch. You can join a public Terra network, such as the mainnet or testnet, by completing the following steps:
+These instructions are for setting up a brand new full node from scratch. You can join a public JMES network, such as the mainnet or testnet, by completing the following steps:
 
 ### 1. Select a network
 
@@ -72,12 +72,12 @@ Specify the network you want to join by choosing the corresponding **genesis fil
 
 	| Network     | Type    | Genesis                                                                                        | Addressbook                                                                              | Seeds                                                                             |
 | :---------- | :------ | :------------------------------------------------------------------------------------------------ | :--------------------------------------------------------------------------------------- | :-------------------------------------------------------------------------------- |
-| `phoenix-1` | Mainnet | [Genesis Link](https://phoenix-genesis.s3.us-west-1.amazonaws.com/genesis.json)                   |  Peer List Community maintained by [Polkachu](https://polkachu.com/addrbooks/terra)      | [Seeds List](https://github.com/terra-money/mainnet#seed-nodes)                   |
-| `pisco-1`   | Testnet | [Genesis Link](https://raw.githubusercontent.com/terra-money/testnet/master/pisco-1/genesis.json) |  Peer List Community maintained by [Polkachu](https://polkachu.com/testnets/terra/peers) | [Seeds List](https://github.com/terra-money/testnet/tree/main/pisco-1#seed-nodes) |
+| `phoenix-1` | Mainnet | [Genesis Link](https://phoenix-genesis.s3.us-west-1.amazonaws.com/genesis.json)                   |  Peer List Community maintained by [Polkachu](https://polkachu.com/addrbooks/jmes)      | [Seeds List](https://github.com/jmesworld/mainnet#seed-nodes)                   |
+| `pisco-1`   | Testnet | [Genesis Link](https://raw.githubusercontent.com/jmesworld/testnet/master/pisco-1/genesis.json) |  Peer List Community maintained by [Polkachu](https://polkachu.com/testnets/jmes/peers) | [Seeds List](https://github.com/jmesworld/testnet/tree/main/pisco-1#seed-nodes) |
 
 <Admonition type="tip" icon="💡" title="Selecting a network">
 
-Note that the versions of the network listed above are the [latest versions](https://github.com/terra-money/testnet/tree/master#latest-networks). To find earlier versions, please consult the [networks repo](https://github.com/terra-money/testnet).
+Note that the versions of the network listed above are the [latest versions](https://github.com/jmesworld/testnet/tree/master#latest-networks). To find earlier versions, please consult the [networks repo](https://github.com/jmesworld/testnet).
 
 </Admonition>
 
@@ -86,20 +86,20 @@ Note that the versions of the network listed above are the [latest versions](htt
 
 **Genesis-transaction** specifies the account balances and parameters at the start of the network to use when replaying transactions and syncing.
 
-**Addressbook** lists a selection of peers for your node to dial to in order to discover other nodes in the network. Public address books of peers are made available by the Terra community.
+**Addressbook** lists a selection of peers for your node to dial to in order to discover other nodes in the network. Public address books of peers are made available by the JMES community.
 
 Choose a `testnet` or `mainnet` address type and download the appropriate genesis-transaction and addressbook. Links to these are posted in the [Select a network](#1-select-a-network) section.
 
-- For default Terrad configurations, the `genesis` and `addressbook` files should be placed under `~/.terra/config/genesis.json` and `~/.terra/config/addrbook.json` respectively.
+- For default JMESd configurations, the `genesis` and `addressbook` files should be placed under `~/.jmes/config/genesis.json` and `~/.jmes/config/addrbook.json` respectively.
 
 **Example**:
 
 ```bash
 # Obtain the genesis for phoenix-1:
-wget https://phoenix-genesis.s3.us-west-1.amazonaws.com/genesis.json -O ~/.terra/config/genesis.json
+wget https://phoenix-genesis.s3.us-west-1.amazonaws.com/genesis.json -O ~/.jmes/config/genesis.json
 
 # Obtain the addressbook for the phoenix-1 from Polkachu:
-wget https://snapshots1.polkachu.com/addrbook/terra/addrbook.json -O ~/.terra/config/addrbook.json
+wget https://snapshots1.polkachu.com/addrbook/jmes/addrbook.json -O ~/.jmes/config/addrbook.json
 ```
 
 Continue to the [Sync](sync.mdx) page to find out more about syncing your node.

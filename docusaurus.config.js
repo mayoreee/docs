@@ -13,7 +13,7 @@ module.exports = async function config() {
     url: 'https://jmes.world/',
     baseUrl: '/',
     onBrokenLinks: 'throw',
-    onBrokenMarkdownLinks: 'warn',
+    onBrokenMarkdownLinks: 'throw',
     favicon: 'img/favicon.ico',
     organizationName: 'jmes-world', // Usually your GitHub org/user name.
     projectName: 'documentation', // Usually your repo name.

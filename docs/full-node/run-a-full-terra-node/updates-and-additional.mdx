@@ -21,9 +21,9 @@ Make sure to create a backup of both of these files and then proceed to the next
 Remove the outdated files and reset the data:
 
 ```bash
-rm ~/.terra/config/genesis.json
-rm ~/.terra/config/addrbook.json
-terrad unsafe-reset-all
+rm ~/.jmes/config/genesis.json
+rm ~/.jmes/config/addrbook.json
+jmesd unsafe-reset-all
 ```
 
 Your node is now in a pristine state. Be aware that the original `priv_validator.json` and `config.toml` files will be affected by this command. If you had any sentry nodes or full nodes set up before, your node will still try to connect to them, but may fail if they haven't also been upgraded.
@@ -50,30 +50,30 @@ If you have issues at this step, please check that you have a compatible version
 
 </Admonition>
 
-The previous command uses `master` as it contains the latest stable release. See the [testnet repo](https://github.com/terra-money/testnet) for details on which version is needed for which testnet, and the [Terra Core release page](https://github.com/terra-money/core/releases) for details on each release.
+The previous command uses `master` as it contains the latest stable release. See the [testnet repo](https://github.com/jmesworld/testnet) for details on which version is needed for which testnet, and the [JMES Core release page](https://github.com/jmesworld/core/releases) for details on each release.
 
 Your full node is now cleanly upgraded!
 
 ## Exporting state
 
-Terra can export the entire application state to a JSON file. You can use this file for manual analysis or as the genesis file of a new network.
+JMES can export the entire application state to a JSON file. You can use this file for manual analysis or as the genesis file of a new network.
 
 Export state:
 
 ```bash
-terrad export > [filename].json
+jmesd export > [filename].json
 ```
 
 You can also export a state from a particular height. The following command will export the state after the block height you specify:
 
 ```bash
-terrad export --height [height] > [filename].json
+jmesd export --height [height] > [filename].json
 ```
 
 If you plan to start a new network from the exported state, export with the `--for-zero-height` flag:
 
 ```bash
-terrad export --height [height] --for-zero-height > [filename].json
+jmesd export --height [height] --for-zero-height > [filename].json
 ```
 
 <Admonition type="tip" icon="💡">
@@ -84,7 +84,7 @@ For more information on seeds and peers, visit the [Tendermint documentation](ht
 
 ## Optimizing Memory Management
 
-Some users of the Terra node software may experience abnormal memory usage. This behaviour is endemic in the Cosmos SDK.
+Some users of the JMES node software may experience abnormal memory usage. This behaviour is endemic in the Cosmos SDK.
 
 You can install `jemalloc` to assist in managing this issue.
 
@@ -98,11 +98,11 @@ To install jemalloc, run the following command:
 sudo apt-get install -y libjemalloc-dev
 ```
 
-After installation, edit your `terrad.service` to match the following configuration.
+After installation, edit your `jmesd.service` to match the following configuration.
 
 ```
 
-sudo vim /etc/systemd/system/terrad.service
+sudo vim /etc/systemd/system/jmesd.service
 
 ```
 
@@ -110,7 +110,7 @@ sudo vim /etc/systemd/system/terrad.service
 
 [Unit]
 
-Description=Terrad
+Description=JMESd
 
 [Service]
 
@@ -118,15 +118,15 @@ Type=simple
 
 User=ubuntu
 
-ExecStart=/home/ubuntu/go/bin/terrad start --home /home/ubuntu/.terra --log_level error
+ExecStart=/home/ubuntu/go/bin/jmesd start --home /home/ubuntu/.jmes --log_level error
 
-WorkingDirectory=/home/ubuntu/.terra
+WorkingDirectory=/home/ubuntu/.jmes
 
 Restart=always
 
 RestartSec=1s
 
-SyslogIdentifier=terrad
+SyslogIdentifier=jmesd
 
 LimitNOFILE=65535
 
@@ -170,6 +170,6 @@ persistent_peers = "id100000000000000000000000000000000@1.2.3.4:26656,id20000000
 
 ### Rosetta
 
-Integrate Terra with Coinbase via the Rosetta API. Rosetta is an open-source API that organizes blockchain data into a standardized format, making it easy for developers to build cross-chain applications. Instead of creating specific code for each chain, Rosetta allows different blockchains to integrate into any exchange that uses the Rosetta API.
+Integrate JMES with Coinbase via the Rosetta API. Rosetta is an open-source API that organizes blockchain data into a standardized format, making it easy for developers to build cross-chain applications. Instead of creating specific code for each chain, Rosetta allows different blockchains to integrate into any exchange that uses the Rosetta API.
 
 For more information, visit the [Rosetta docs site](https://www.rosetta-api.org/docs/welcome.html).

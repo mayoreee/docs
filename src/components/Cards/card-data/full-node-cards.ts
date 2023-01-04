@@ -20,28 +20,28 @@ const fullNodeCards: CardProps[] = [
     lightSVG: '/img/icons/core/terracore.svg',
     darkSVG: '/img/icons/dark/terracore.svg',
     header: 'Core modules',
-    summary: 'Learn about Terra Core modules.'
+    summary: 'Learn about JMES Core modules.'
   },
   {
     href: '/develop/localterra',
     lightSVG: '/img/icons/localterra.svg',
     darkSVG: '/img/icons/dark/localterra.svg',
-    header: 'LocalTerra',
-    summary: 'Run a local Terra blockchain in Docker.'
+    header: 'LocalJMES',
+    summary: 'Run a local JMES blockchain in Docker.'
   },
   {
     href: '/full-node/manage-a-terra-validator',
     lightSVG: '/img/icons/run-a-validator.svg',
     darkSVG: '/img/icons/dark/run-a-validator.svg',
     header: 'Manage a validator',
-    summary: 'Set up a validator on Terra.'
+    summary: 'Set up a validator on JMES.'
   },
   {
     href: '/full-node/manage-a-terra-validator/faq.html',
     lightSVG: '/img/icons/about.svg',
     darkSVG: '/img/icons/dark/about.svg',
     header: 'Validator FAQ',
-    summary: 'Learn about validating on Terra.'
+    summary: 'Learn about validating on JMES.'
   },
 ]
 
