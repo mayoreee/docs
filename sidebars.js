@@ -35,25 +35,61 @@ const sidebars = {
       items: [
         {
           type: 'category',
-          label: 'About JMES',
+          label: 'JMES Blockchain',
           collapsed: true,
           link: { type: 'doc', id: 'learn/about/README' },
           items: [
             {
               type: 'doc',
               id: 'learn/about/blockchain',
-              label: 'Blockchain',
-            },        
-            {
-              type: 'doc',
-              id: 'learn/about/system',
-              label: 'Business Layer',
-            },                    
+              label: 'Protocol',
+            },                       
             {
               type: 'doc',
               id: 'learn/about/whitepaper',
               label: 'Whitepaper',
             },             
+          ],
+        },   
+        {
+          type: 'category',
+          label: 'Business Layer',
+          collapsed: true,
+          link: { type: 'doc', id: 'learn/business/README' },
+          items: [
+            {
+              type: 'doc',
+              id: 'learn/business/README',
+              label: 'Overview',
+            },  
+            {
+              type: 'doc',
+              id: 'learn/business/identities',
+              label: 'Identities',
+            },  
+            {
+              type: 'doc',
+              id: 'learn/business/daos',
+              label: 'DAOs',
+            },            
+            {
+              type: 'category',
+              label: 'Governance',
+              collapsed: true,
+              link: { type: 'doc', id: 'learn/business/governance/README' },
+              items: [
+                {
+                  type: 'doc',
+                  id: 'learn/business/governance/proposal-types',
+                  label: 'Proposal Types',
+                },                                     
+              ],
+            }, 
+            {
+              type: 'doc',
+              id: 'learn/business/official-features',
+              label: 'Official Features',
+            },                                                   
           ],
         },          
         {
