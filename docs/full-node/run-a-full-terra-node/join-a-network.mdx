@@ -42,6 +42,12 @@ In order for JMESd to recognize a wallet address, it must contain tokens. For th
 
 </Admonition>
 
+To get 10 JMES, please paste this link in your browser:
+
+```
+http://51.38.52.37:3002/credit?address=<Insert_Wallet_Address_Here>&denom=ujmes
+```
+
 ### Add your account to the genesis
 
 Run the following commands to add your account and set the initial balance:
@@ -73,7 +79,8 @@ Specify the network you want to join by choosing the corresponding **genesis fil
 	| Network     | Type    | Genesis                                                                                        | Addressbook                                                                              | Seeds                                                                             |
 | :---------- | :------ | :------------------------------------------------------------------------------------------------ | :--------------------------------------------------------------------------------------- | :-------------------------------------------------------------------------------- |
 | `phoenix-1` | Mainnet | [Genesis Link](https://phoenix-genesis.s3.us-west-1.amazonaws.com/genesis.json)                   |  Peer List Community maintained by [Polkachu](https://polkachu.com/addrbooks/jmes)      | [Seeds List](https://github.com/jmesworld/mainnet#seed-nodes)                   |
-| `jmes-888`   | Testnet | [Genesis Link](https://raw.githubusercontent.com/jmesworld/testnet/master/pisco-1/genesis.json) |  Peer List Community maintained by [JMES](https://raw.githubusercontent.com/mayoreee/jmes-genesis/master/genesis.json) | [Seeds List](https://github.com/jmesworld/testnet) |
+| `jmes-888`   | Testnet | [Genesis Link](https://raw.githubusercontent.com/jmesworld/testnet/main/jmes-888/genesis.json) |  Peer List Community maintained by [JMES](https://raw.githubusercontent.com/jmesworld/testnet/main/jmes-888/addrbook.json) | [Seeds List](https://github.com/jmesworld/testnet) |
+
 
 <Admonition type="tip" icon="💡" title="Selecting a network">
 
@@ -96,10 +103,10 @@ Choose a `testnet` or `mainnet` address type and download the appropriate genesi
 
 ```bash
 # Obtain the genesis for jmes-888:
-wget https://raw.githubusercontent.com/mayoreee/jmes-genesis/master/genesis.json -O ~/.jmes/config/genesis.json
+wget https://raw.githubusercontent.com/jmesworld/testnet/main/jmes-888/genesis.json -O ~/.jmes/config/genesis.json
 
-# Obtain the addressbook for the phoenix-1 from Polkachu:
-wget https://raw.githubusercontent.com/mayoreee/jmes-genesis/master/addrbook.json -O ~/.jmes/config/addrbook.json
+# Obtain the addressbook for the jmes-888:
+wget https://raw.githubusercontent.com/jmesworld/testnet/main/jmes-888/addrbook.json -O ~/.jmes/config/addrbook.json
 ```
 
 Continue to the [Sync](sync.mdx) page to find out more about syncing your node.
