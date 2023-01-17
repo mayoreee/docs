@@ -57,7 +57,7 @@ The genesis parameters outlined in the [Genesis Builder Script](https://github.c
 
     # Bank: setup supply
     genesis['app_state']['bank']['supply'] = [{
-        'denom': DENOM_LUNA,
+        'denom': DENOM_BJMES,
         'amount': str(TOTAL_ALLOCATION),
     }]
 
@@ -65,14 +65,14 @@ The genesis parameters outlined in the [Genesis Builder Script](https://github.c
     genesis['app_state']['bank']['denom_metadata'] = [{
         'description': 'The native staking token of JMES',
         'denom_units': [
-            {'denom': 'uluna', 'exponent': 0, 'aliases': ['microluna']},
-            {'denom': 'mluna', 'exponent': 3, 'aliases': ['milliluna']},
-            {'denom': 'luna', 'exponent': 6, 'aliases': []},
+            {'denom': 'ubJMES', 'exponent': 0, 'aliases': ['microbJMES']},
+            {'denom': 'mbJMES', 'exponent': 3, 'aliases': ['millibJMES']},
+            {'denom': 'bJMES', 'exponent': 6, 'aliases': []},
         ],
-        'base':    'uluna',
-        'display': 'luna',
-        'name':    'LUNA',
-        'symbol':  'LUNA',
+        'base':    'ubJMES',
+        'display': 'bJMES',
+        'name':    'BJMES',
+        'symbol':  'BJMES',
     }]
 
     ```

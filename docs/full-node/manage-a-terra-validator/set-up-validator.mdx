@@ -31,14 +31,14 @@ The Consensus PubKey of your node is required to create a new validator. Run:
 
 <Admonition type="tip" icon="💡" title="Get coins">
 
-In order for jmesd to recognize a wallet address it must contain tokens. 10 JMES is sufficient for this process.
+For the testnet, use [the faucet](http://faucet.jmes.cloud/) to send bJMES to your wallet. If you are on mainnet, send funds from an existing wallet. 1-3 bJMES are sufficient for most setup processes.
 
 </Admonition>
 
 To get 10 JMES, please paste this link in your browser:
 
 ```
-http://51.38.52.37:3002/credit?address=<Insert_Wallet_Address_Here>&denom=ujmes
+http://explorer.jmes.cloud/faucet/:3002/credit?address=<Insert_Wallet_Address_Here>&denom=ujmes
 ```
 
 To create the validator and initialize it with a self-delegation, run the following command. `key-name` is the name of the Application Operator Key that is used to sign transactions.

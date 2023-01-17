@@ -8,7 +8,7 @@ JMES's staking module inherits from the Cosmos SDK's [`staking`](https://docs.co
 
 </Admonition>
 
-The staking module enables JMES's proof-of-stake functionality by requiring validators to bond Luna, the native staking asset.
+The staking module enables JMES's proof-of-stake functionality by requiring validators to bond bJMES, the native staking asset.
 
 ## Message types
 
@@ -156,13 +156,13 @@ type Params struct {
 The genesis parameters for the staking module outlined in the [Genesis Builder Script](https://github.com/jmesworld/genesis-tools/blob/main/src/genesis_builder.py#L132) are as follows:
 
 ```py
-    # Staking: change bond_denom to uluna and max validators to 130
+    # Staking: change bond_denom to ubJMES and max validators to 130
     genesis['app_state']['staking']['params'] = {
         'unbonding_time': '1814400s',  # 21 days
         'max_validators': 130,
         'max_entries': 7,
         'historical_entries': 10000,
-        'bond_denom': DENOM_LUNA
+        'bond_denom': DENOM_BJMES
 ```
 
 ### `unbonding_time`
@@ -189,6 +189,6 @@ Maximum entries for either unbonding delegation or redelegation per pair or trio
 ### `bond_denom`
 
 - type: `string`
-- default: `uluna`
+- default: `ubJMES`
 
 Denomination of the asset required for staking.
