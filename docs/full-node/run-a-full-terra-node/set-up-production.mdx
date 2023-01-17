@@ -10,7 +10,7 @@ For information about running a validator node, visit the [validator guide](../m
 
 ## Create a dedicated user
 
-Although JMESd does not require a super user account, during the setup process you'll need super user permissions to create and modify some files. It is strongly recommended to use a normal user when running JMESd.
+Although jmesd does not require a super user account, during the setup process you'll need super user permissions to create and modify some files. It is strongly recommended to use a normal user when running jmesd.
 
 ## Increase limit of file descriptors per process
 
@@ -28,9 +28,9 @@ Modify `/etc/security/limits.conf`[\*](https://linux.die.net/man/5/limits.conf) 
 
 # Run the server as a daemon
 
-JMESd must be running at all times. It is recommended that you register JMESd as a `systemd` service so that it will be started automatically when the system reboots.
+jmesd must be running at all times. It is recommended that you register jmesd as a `systemd` service so that it will be started automatically when the system reboots.
 
-## Register JMESd as a service
+## Register jmesd as a service
 
 1. Create a service definition file in `/etc/systemd/system/jmesd.service`.
 
@@ -56,11 +56,11 @@ JMESd must be running at all times. It is recommended that you register JMESd as
 
 2. Modify the `Service` section according to your environment:
 
-   - Enter the user (likely your username, unless you created a user specifically for JMESd).
-   - Enter the path to the JMESd executable. `<PATH_TO_JMESD>` is likely `/home/<YOUR_USER>/go/bin/jmesd` or `/usr/go/bin`. Confirm this with `whereis jmesd`.
+   - Enter the user (likely your username, unless you created a user specifically for jmesd).
+   - Enter the path to the jmesd executable. `<PATH_TO_JMESD>` is likely `/home/<YOUR_USER>/go/bin/jmesd` or `/usr/go/bin`. Confirm this with `whereis jmesd`.
    - Make sure you made the correct edits to `/etc/security/limits.conf`.
 
-3. Run `systemctl daemon-reload` followed by `systemctl enable jmesd`. This will register JMESd as a system service and run the program upon startup.
+3. Run `systemctl daemon-reload` followed by `systemctl enable jmesd`. This will register jmesd as a system service and run the program upon startup.
 
 4. Now start the serivce with `systemctl start jmesd`.
 

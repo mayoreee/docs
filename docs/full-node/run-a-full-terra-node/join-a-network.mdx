@@ -38,7 +38,7 @@ The simplest JMES network you can set up is a local testnet with just a single n
 
 <Admonition type="tip" icon="💡" title="Get tokens">
 
-In order for JMESd to recognize a wallet address, it must contain tokens. For the testnet, use [the faucet](https://faucet.terra.money/) to send bJMES to your wallet. If you are on mainnet, send funds from an existing wallet. 1-3 bJMES are sufficient for most setup processes.
+In order for JMESd to recognize a wallet address, it must contain tokens. For the testnet, use [the faucet](https://faucet.terra.money/) to send JMES to your wallet. If you are on mainnet, send funds from an existing wallet. 1-3 jmes are sufficient for most setup processes.
 
 </Admonition>
 
@@ -47,8 +47,8 @@ In order for JMESd to recognize a wallet address, it must contain tokens. For th
 Run the following commands to add your account and set the initial balance:
 
 ```bash
-jmesd add-genesis-account $(jmesd keys show <account-name> -a) 100000000ubJMES
-jmesd gentx <my-account> 10000000ubJMES --chain-id=<testnet-name>
+jmesd add-genesis-account $(jmesd keys show <account-name> -a) 100000000ujmes
+jmesd gentx <my-account> 10000000ujmes --chain-id=<testnet-name>
 jmesd collect-gentxs
 ```
 
@@ -60,7 +60,7 @@ Run the following command to start your private network:
 jmesd start
 ```
 
-If the private JMES network is set up correctly, your JMESd node will be running on `tcp://localhost:26656`, listening for incoming transactions, and signing blocks.
+If the private JMES network is set up correctly, your jmesd node will be running on `tcp://localhost:26656`, listening for incoming transactions, and signing blocks.
 
 ## Join a public network
 
@@ -73,7 +73,7 @@ Specify the network you want to join by choosing the corresponding **genesis fil
 	| Network     | Type    | Genesis                                                                                        | Addressbook                                                                              | Seeds                                                                             |
 | :---------- | :------ | :------------------------------------------------------------------------------------------------ | :--------------------------------------------------------------------------------------- | :-------------------------------------------------------------------------------- |
 | `phoenix-1` | Mainnet | [Genesis Link](https://phoenix-genesis.s3.us-west-1.amazonaws.com/genesis.json)                   |  Peer List Community maintained by [Polkachu](https://polkachu.com/addrbooks/jmes)      | [Seeds List](https://github.com/jmesworld/mainnet#seed-nodes)                   |
-| `pisco-1`   | Testnet | [Genesis Link](https://raw.githubusercontent.com/jmesworld/testnet/master/pisco-1/genesis.json) |  Peer List Community maintained by [Polkachu](https://polkachu.com/testnets/jmes/peers) | [Seeds List](https://github.com/jmesworld/testnet/tree/main/pisco-1#seed-nodes) |
+| `jmes-888`   | Testnet | [Genesis Link](https://raw.githubusercontent.com/jmesworld/testnet/master/pisco-1/genesis.json) |  Peer List Community maintained by [JMES](https://raw.githubusercontent.com/mayoreee/jmes-genesis/master/genesis.json) | [Seeds List](https://github.com/jmesworld/testnet) |
 
 <Admonition type="tip" icon="💡" title="Selecting a network">
 
@@ -90,16 +90,16 @@ Note that the versions of the network listed above are the [latest versions](htt
 
 Choose a `testnet` or `mainnet` address type and download the appropriate genesis-transaction and addressbook. Links to these are posted in the [Select a network](#1-select-a-network) section.
 
-- For default JMESd configurations, the `genesis` and `addressbook` files should be placed under `~/.jmes/config/genesis.json` and `~/.jmes/config/addrbook.json` respectively.
+- For default jmesd configurations, the `genesis` and `addressbook` files should be placed under `~/.jmes/config/genesis.json` and `~/.jmes/config/addrbook.json` respectively.
 
 **Example**:
 
 ```bash
-# Obtain the genesis for phoenix-1:
-wget https://phoenix-genesis.s3.us-west-1.amazonaws.com/genesis.json -O ~/.jmes/config/genesis.json
+# Obtain the genesis for jmes-888:
+wget https://raw.githubusercontent.com/mayoreee/jmes-genesis/master/genesis.json -O ~/.jmes/config/genesis.json
 
 # Obtain the addressbook for the phoenix-1 from Polkachu:
-wget https://snapshots1.polkachu.com/addrbook/jmes/addrbook.json -O ~/.jmes/config/addrbook.json
+wget https://raw.githubusercontent.com/mayoreee/jmes-genesis/master/addrbook.json -O ~/.jmes/config/addrbook.json
 ```
 
 Continue to the [Sync](sync.mdx) page to find out more about syncing your node.

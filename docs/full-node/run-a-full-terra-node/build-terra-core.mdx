@@ -6,7 +6,7 @@ import Admonition from '@theme/Admonition';
 
 # Build JMES Core
 
-JMES Core is the official Golang reference implementation of the JMES node software. Use this guide to install JMES Core and JMESd, the command-line interface and daemon that connects to JMES and enables you to interact with the JMES blockchain.
+JMES Core is the official Golang reference implementation of the JMES node software. Use this guide to install JMES Core and jmesd, the command-line interface and daemon that connects to JMES and enables you to interact with the JMES blockchain.
 
 ## Get the JMES Core source code
 
@@ -18,24 +18,24 @@ If you are syncing a node from genesis, you will need to use the appropriate cor
 | :----------: | :----------: | :-----------------: | :----------: |
 | `phoenix-1`  |   Mainnet    | `genesis` - 890000  |    v2.0.0    |
 |              |              |  89000 - `present`  |    v2.1.1    |
-|  `pisco-1`   |   Testnet    | `genesis` - 838500  | v2.0.0-rc.0  |
+|  `jmes-888`   |   Testnet    | `genesis` - 838500  | v2.0.0-rc.0  |
 |              |              |  838500 - 2777777   | 2.1.0-beta.1 |
 |              |              | 2777777 - `present` |    v2.2.0    |
 
 </Admonition>
 
-1. Use `git` to retrieve [JMES Core](https://github.com/jmesworld/core/), and check out the `main` branch, which contains the latest stable release. You can find the latest tag on the [tags page](https://github.com/jmesworld/core/tags) or via autocomplete in your terminal: type `git checkout v` and press `<TAB>`.
+1. Use `git` to retrieve [JMES Core](https://github.com/jmesworld/core/), and check out the `cosmwasm` branch, which contains the latest stable release. You can find the latest tag on the [tags page](https://github.com/jmesworld/core/tags) or via autocomplete in your terminal: type `git checkout v` and press `<TAB>`.
 
    ```
-   git clone https://github.com/jmesworld/core
+   git clone -b cosmwasm https://github.com/jmesworld/core
    cd core
-   git checkout [latest version]
    ```
 
 2. Build JMES Core. This will install the JMESd executable to your [ `GOPATH` ](https://go.dev/doc/gopath_code) environment variable.
 
    ```bash
-   make install
+   cd app 
+   go build
    ```
 
 3. Verify that JMES Core is installed correctly.
