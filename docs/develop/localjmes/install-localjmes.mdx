@@ -1,6 +1,6 @@
 import Admonition from '@theme/Admonition';
 
-# Install LocalTerra
+# Install LocalJmes
 
 ## Prerequisites
 
@@ -8,35 +8,35 @@ import Admonition from '@theme/Admonition';
 - [`docker-compose`](https://docs.docker.com/compose/install/)
 - Supported known architecture: x86_64
 
-<Admonition type="tip" icon="💡" title="Terrain and LocalTerra">
+<Admonition type="tip" icon="💡" title="Terrain and LocalJmes">
 
-If you are using LocalTerra with Terrain, use the [Terrain with LocalTerra guide](../terrain/using-terrain-localterra.mdx).
+If you are using LocalJmes with Terrain, use the [Terrain with LocalJmes guide](../terrain/using-terrain-localterra.mdx).
 
 </Admonition>
 
 
 ## Installation
 
-1. Run the following command to clone the LocalTerra repository:
+1. Run the following command to clone the LocalJmes repository:
 
    ```sh
-   git clone --depth 1 https://www.github.com/terra-money/LocalTerra
+   git clone --depth 1 https://www.github.com/terra-money/LocalJmes
    ```
 
 2. Make sure your Docker daemon is running in the background and [`docker-compose`](https://github.com/docker/compose) is installed.
 
-## Using LocalTerra
+## Using LocalJmes
 
 ### Start
 
 ```sh
-cd LocalTerra
+cd LocalJmes
 docker-compose up
 ```
 
 Your environment now contains:
 
-- [Terrad](http://github.com/terra-money/core) RPC node running on `tcp://localhost:26657`
+- [Jmesd](http://github.com/terra-money/core) RPC node running on `tcp://localhost:26657`
 - LCD running on http://localhost:1317
 - [FCD](http://www.github.com/terra-money/fcd) running on http://localhost:3060
 

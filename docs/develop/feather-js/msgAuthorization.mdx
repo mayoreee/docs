@@ -1,6 +1,6 @@
 # MsgAuthorization
 
-The following code snippet requires [LocalTerra](../localterra/README.mdx).
+The following code snippet requires [LocalTerra](../localjmes/README.mdx).
 
 1. `test1` creates MsgGrantAuthorization message to grant MsgSend authorization to grantee `test2`.
 2. `test2` creates MsgExecAuthorized message to send `2000000000000uluna` from the `test1` account to the `test3` account.
@@ -16,7 +16,7 @@ import {
   Int,
   MsgExecAuthorized,
   Coins,
-} from '@terra-money/feather.js';
+} from '@jmes-money/feather.js';
 
 function grant(
   granter: Wallet,
@@ -26,7 +26,7 @@ function grant(
 ) {
   const msgs = [
     new MsgGrantAuthorization(
-      granter.key.accAddress('terra'),
+      granter.key.accAddress('jmes'),
       grantee,
       new SendAuthorization(spendLimit),
       duration,
@@ -45,7 +45,7 @@ function sendAuthorized(
   const msgs = [
     new MsgExecAuthorized(grantee.key.accAddress, [
       new MsgSend(
-        granter.key.accAddress('terra'), // From test1
+        granter.key.accAddress('jmes'), // From test1
         to,
         amount,
       ),
@@ -58,7 +58,7 @@ function sendAuthorized(
 async function main() {
   const client = new LCDClient(...);
 
-  // Granter (terra1x46rqay4d3cssq8gxxvqz8xt6nwlz4td20k38v)
+  // Granter (jmes1x46rqay4d3cssq8gxxvqz8xt6nwlz4td20k38v)
   const granter = client.wallet(
     new MnemonicKey({
       mnemonic:
@@ -66,7 +66,7 @@ async function main() {
     }),
   );
 
-  // Grantee (terra17lmam6zguazs5q5u6z5mmx76uj63gldnse2pdp)
+  // Grantee (jmes17lmam6zguazs5q5u6z5mmx76uj63gldnse2pdp)
   const grantee = client.wallet(
     new MnemonicKey({
       mnemonic:
@@ -77,7 +77,7 @@ async function main() {
   // MsgGrantAuthorization
   await grant(
     granter,
-    grantee.key.accAddress('terra'),
+    grantee.key.accAddress('jmes'),
     // Set enough spend limit since it will be decreased upon every MsgSend transactions
     '1000000000000uluna',
     // expire after 100 years
@@ -98,7 +98,7 @@ async function main() {
     granter,
     grantee,
     // Test3
-    'terra1757tkx08n0cqrw7p86ny9lnxsqeth0wgp0em95',
+    'jmes1757tkx08n0cqrw7p86ny9lnxsqeth0wgp0em95',
     '2000000000000uluna',
   )
     .then((tx) => client.tx.broadcast(tx, 'piscp-1'))
