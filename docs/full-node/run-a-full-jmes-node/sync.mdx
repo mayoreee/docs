@@ -10,7 +10,7 @@ This guide will walk you through how to [sync the chain from genesis](#sync-from
 
 <Admonition type="caution" icon="☢️" title="Setup for successful sync">
 
-Before you attempt to sync your node, confirm that you have properly set up your [system configuration](./system-config.mdx#system-configuration) and [built JMES core](./build-terra-core.mdx#get-the-terra-core-source-code).
+Before you attempt to sync your node, confirm that you have properly set up your [system configuration](./system-config.mdx#system-configuration) and [built JMES core](./build-jmes-core.mdx#get-the-jmes-core-source-code).
 
 </Admonition>
 
@@ -20,7 +20,7 @@ The process for syncing your full node from genesis will differ between the JMES
 
 ### JMES-888 testnet
 
-1. To install the latest version `v2.0.0-rc.0` of jmesd, [navigate into your `core` directory](./build-terra-core.mdx#get-the-terra-core-source-code) and execute the following commands in your terminal:
+1. To install the latest version `v2.0.0-rc.0` of jmesd, [navigate into your `core` directory](./build-jmes-core.mdx#get-the-jmes-core-source-code) and execute the following commands in your terminal:
 
 ```
 cd app
@@ -66,7 +66,7 @@ From here, you can [monitor the sync](#monitor-the-sync). Make sure to check on 
 
 If you would like to sync your node using the Udo mainnet, you will need to utilize version `v2.0.0` of jmesd up until the block height of 890,000. To sync your node from block 890,000 onward, you will need to utilize version `v2.1.1` of jmesd.
 
-1. To switch to version `v2.0.0` of jmesd, [change into your `core` directory](./build-terra-core.mdx#get-the-terra-core-source-code) and execute the following commands in your terminal:
+1. To switch to version `v2.0.0` of jmesd, [change into your `core` directory](./build-jmes-core.mdx#get-the-jmes-core-source-code) and execute the following commands in your terminal:
 
 ```
 git checkout v2.0.0
@@ -84,13 +84,13 @@ The result of this command should be `v2.0.0`.
 2. After you have the correct jmesd version, you will need to download the genesis file for Udo in the jmesd config directory:
 
 ```
-wget https://phoenix-genesis.s3.us-west-1.amazonaws.com/genesis.json -O ~/.terra/config/genesis.json
+wget https://phoenix-genesis.s3.us-west-1.amazonaws.com/genesis.json -O ~/.jmes/config/genesis.json
 ```
 
-3. Next, download the `addrbook.json` file containing a list of stable persistent peers into the `~/.terra/config/` directory:
+3. Next, download the `addrbook.json` file containing a list of stable persistent peers into the `~/.jmes/config/` directory:
 
 ```
-wget https://snapshots1.polkachu.com/addrbook/terra/addrbook.json -O ~/.terra/config/addrbook.json
+wget https://snapshots1.polkachu.com/addrbook/jmes/addrbook.json -O ~/.jmes/config/addrbook.json
 ```
 
 4. Finally, you can start the syncing process:
@@ -194,18 +194,18 @@ jmesd start --x-crisis-skip-assert-invariants
 
 ## Sync from snapshot
 
-You can significantly accelerate the synchronization process by providing jmesd with a recent snapshot of the network state. Snapshots are made publicly available by members of the JMES community one example can be downloaded from [Polkachu - Udo Mainnet](https://polkachu.com/state_sync/terra). [Polkachu - Pisco Testnet](https://polkachu.com/testnets/terraInstructions) is provided by Polkachu, and not maintained as part of this documentation.
+You can significantly accelerate the synchronization process by providing jmesd with a recent snapshot of the network state. Snapshots are made publicly available by members of the JMES community one example can be downloaded from [Polkachu - Udo Mainnet](https://polkachu.com/state_sync/jmes). [Polkachu - Pisco Testnet](https://polkachu.com/testnets/jmesInstructions) is provided by Polkachu, and not maintained as part of this documentation.
 
 ### Before using snapshots
 
 Certain files will need to be absent or deleted before downloading a snapshot. A quicksync replaces blockchain data with a custom snapshot. For most use cases, a "pruned" version is adequate. Pruned versions will have certain transactions removed from the archive to improve node performance. If you are running a node for archival purposes, you will want an `archive` or `default` download.
 
-After choosing the appropriate download type, examine your node and ensure that `.terra/data` is empty.
+After choosing the appropriate download type, examine your node and ensure that `.jmes/data` is empty.
 
 **Example**:
 
 ```bash
-6:22PM INF Removed all blockchain history dir=/home/ubuntu/.terra/data
+6:22PM INF Removed all blockchain history dir=/home/ubuntu/.jmes/data
 ```
 
 <Admonition type="caution" icon="☢️">
@@ -215,7 +215,7 @@ If you are a validator, ensure that you do not remove your private key.
 Example of a removed private key:
 
 ```bash
-6:22PM INF Reset private validator file to genesis state keyFile=/home/ubuntu/.terra/config/priv_validator_key.json stateFile=/home/ubuntu/.terra/data/priv_validator_state.json
+6:22PM INF Reset private validator file to genesis state keyFile=/home/ubuntu/.jmes/config/priv_validator_key.json stateFile=/home/ubuntu/.jmes/data/priv_validator_state.json
 ```
 
 </Admonition>
@@ -270,4 +270,4 @@ Validators can view the status of the network using [JMES Explorer](http://explo
 
 ## Congratulations!
 
-You've successfully joined a network as a full node operator. If you are a validator, continue to [manage a JMES validator](../manage-a-terra-validator/README.mdx) for next steps.
+You've successfully joined a network as a full node operator. If you are a validator, continue to [manage a JMES validator](../manage-a-jmes-validator/README.mdx) for next steps.

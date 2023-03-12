@@ -66,10 +66,10 @@ After all the dependencies have been installed, you can close the terminal windo
 ## 2. Start LocalTerra
 LocalTerra is a complete Terra testnet and ecosystem containerized with Docker. In this tutorial, you will use LocalTerra to simulate transactions in a local testing environment.
  
-After [installing LocalTerra](../localterra/install-localterra.mdx) and all of its dependencies, open a new terminal window and run the following commands.
+After [installing LocalTerra](../localjmes/install-localjmes.mdx) and all of its dependencies, open a new terminal window and run the following commands.
  
 ```sh
-cd localterra
+cd localjmes
 docker-compose up
 ```
  
@@ -79,7 +79,7 @@ After starting LocalTerra successfully, you should start seeing simulated blockc
  
 In order to use your Terra Station wallet with LocalTerra, you will need to configure your wallet to run on your LocalTerra network.
  
-1. Open the Terra Station extension in your Google Chrome web browser. Click the gear icon in the upper right-hand corner and change the network from **mainnet** to  **localterra**.
+1. Open the Terra Station extension in your Google Chrome web browser. Click the gear icon in the upper right-hand corner and change the network from **mainnet** to  **localjmes**.
  
     <img className="readme-img-md" src="/img/nft/extension_localterra.png" alt="Switch to LocalTerra" />
  
@@ -117,7 +117,7 @@ Before you can deploy your contract and begin minting your NFT, you will need to
         "instantiateMsg": {
           "name":"NFT Collection Name",
           "symbol":"NFTSYMBOL",
-          "minter":"terraxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+          "minter":"jmesxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
         }
 
       }
@@ -258,7 +258,7 @@ Congratulations, you have just minted your first NFT!
  
    ```json
    {
-     "localterra": {
+     "localjmes": {
        "cw721-metadata-onchain": {
          "codeId": "1",
          "contractAddresses": {
