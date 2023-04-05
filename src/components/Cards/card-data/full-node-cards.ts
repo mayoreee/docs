@@ -2,7 +2,7 @@ import { CardProps } from '../Card';
 
 const fullNodeCards: CardProps[] = [
   {
-    href: '/full-node/run-a-full-terra-node',
+    href: '/full-node/run-a-full-jmes-node',
     lightSVG: '/img/icons/node.svg',
     darkSVG: '/img/icons/dark/node.svg',
     header: 'Run a full node',
