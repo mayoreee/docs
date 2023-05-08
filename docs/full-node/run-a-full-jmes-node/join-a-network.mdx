@@ -6,28 +6,18 @@ import Admonition from '@theme/Admonition';
 
 # Join a network
 
-It is highly recommended that you set up a private local network before joining a public network. This will help you get familiar with the setup process, and provide an environment for testing. The following sections outline this process. If you want to join a public network without setting up a private network, you can skip to [join a public network](#join-a-public-network).
+You can either setup you own local private network or join a public network. If you want to join a public network (e.g. Testnet), you can skip to [join a public network](#join-a-public-network).
 
 ## Set up a local private network
 
-Validators can set up a private JMES network to become familiar with running a full JMES node before joining a public network.
-
-
-<Admonition type="tip" icon="💡" title="LocalJMES">
-
-If you are a developer and want to set up a local, WASM-enabled, private testnet for smart contracts, visit [install LocalJMES](../../develop/localjmes/README.mdx).
-
-</Admonition>
-
-
-### Create a single node
+### 1. Create a single node
 
 The simplest JMES network you can set up is a local testnet with just a single node. In a single-node environment, you have one account and are the only validator signing blocks for your private network.
 
 1. Initialize your genesis file that will bootstrap the network. Replace the following variables with your own information:
 
    ```bash
-     jmesd init --chain-id=<testnet-name> <node-moniker>
+     jmesd init --chain-id=<private-network-id> <node-moniker>
    ```
 
 2. Generate a JMES account. Replace the variable with your account name:
@@ -35,42 +25,29 @@ The simplest JMES network you can set up is a local testnet with just a single n
    ```bash
    jmesd keys add <account-name>
    ```
-
-<Admonition type="tip" icon="💡" title="Get tokens">
-
-In order for JMESd to recognize a wallet address, it must contain tokens. For the testnet, use [the faucet](https://faucet.terra.money/) to send JMES to your wallet. If you are on mainnet, send funds from an existing wallet. 1-3 jmes are sufficient for most setup processes.
-
-</Admonition>
-
-To get 1 JMES, please paste this link in your browser:
-
-```
-http://51.38.52.37:3002/credit?address=<Insert_Wallet_Address_Here>&denom=ujmes
-```
-
-### Add your account to the genesis
+### 2. Add your account to the genesis
 
 Run the following commands to add your account and set the initial balance:
 
 ```bash
-jmesd add-genesis-account $(jmesd keys show <account-name> -a) 100000000ujmes
-jmesd gentx <my-account> 10000000ujmes --chain-id=<testnet-name>
+jmesd add-genesis-account $(jmesd keys show <account-name> -a) 20000000000000ujmes
+jmesd gentx <my-account> 100000000ujmes --chain-id=<private-network-id>
 jmesd collect-gentxs
 ```
 
-### Start your private JMES network
+### 3. Start your private JMES network
 
 Run the following command to start your private network:
 
 ```bash
 jmesd start
+# OR 
+systemctl start jmesd    # runs as a system service in the background
 ```
 
 If the private JMES network is set up correctly, your jmesd node will be running on `tcp://localhost:26656`, listening for incoming transactions, and signing blocks.
 
 ## Join a public network
-
-These instructions are for setting up a brand new full node from scratch. You can join a public JMES network, such as the mainnet or testnet, by completing the following steps:
 
 ### 1. Select a network
 
@@ -78,6 +55,7 @@ Specify the network you want to join by choosing the corresponding **genesis fil
 
 	| Network     | Type    | Genesis                                                                                        | Addressbook                                                                              | Seeds                                                                             |
 | :---------- | :------ | :------------------------------------------------------------------------------------------------ | :--------------------------------------------------------------------------------------- | :-------------------------------------------------------------------------------- |                 |
+| `jmes-testnet-1`   | Testnet | [Genesis Link](https://raw.githubusercontent.com/jmesworld/testnet/main/jmes-testnet-1/genesis.json) |  Peer List Community maintained by [JMES](https://raw.githubusercontent.com/jmesworld/testnet/main/jmes-testnet-1/addrbook.json) | [Seeds List](https://github.com/jmesworld/testnet) |
 | `jmes-888`   | Testnet | [Genesis Link](https://raw.githubusercontent.com/jmesworld/testnet/main/jmes-888/genesis.json) |  Peer List Community maintained by [JMES](https://raw.githubusercontent.com/jmesworld/testnet/main/jmes-888/addrbook.json) | [Seeds List](https://github.com/jmesworld/testnet) |
 
 ### 2. Download genesis file and address book
@@ -94,10 +72,10 @@ Choose a `testnet` or `mainnet` address type and download the appropriate genesi
 
 ```bash
 # Obtain the genesis for jmes-888:
-wget https://raw.githubusercontent.com/jmesworld/testnet/main/jmes-888/genesis.json -O ~/.jmes/config/genesis.json
+wget https://raw.githubusercontent.com/jmesworld/testnet/main/jmes-testnet-1/genesis.json -O ~/.jmes/config/genesis.json
 
 # Obtain the addressbook for the jmes-888:
-wget https://raw.githubusercontent.com/jmesworld/testnet/main/jmes-888/addrbook.json -O ~/.jmes/config/addrbook.json
+wget https://raw.githubusercontent.com/jmesworld/testnet/main/jmes-testnet-1/addrbook.json -O ~/.jmes/config/addrbook.json
 ```
 
 Continue to the [Sync](sync.mdx) page to find out more about syncing your node.

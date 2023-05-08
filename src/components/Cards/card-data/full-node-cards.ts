@@ -9,7 +9,7 @@ const fullNodeCards: CardProps[] = [
     summary: 'Configure and manage a full JMES node.'
   },
   {
-    href: '/full-node/run-a-full-terra-node/join-a-network.html',
+    href: '/full-node/run-a-full-jmes-node/join-a-network.html',
     lightSVG: '/img/icons/ecosystem02.svg',
     darkSVG: '/img/icons/dark/ecosystem02.svg',
     header: 'Join a network',
@@ -30,14 +30,14 @@ const fullNodeCards: CardProps[] = [
     summary: 'Run a local JMES blockchain in Docker.'
   },
   {
-    href: '/full-node/manage-a-terra-validator',
+    href: '/full-node/manage-a-jmes-validator',
     lightSVG: '/img/icons/run-a-validator.svg',
     darkSVG: '/img/icons/dark/run-a-validator.svg',
     header: 'Manage a validator',
     summary: 'Set up a validator on JMES.'
   },
   {
-    href: '/full-node/manage-a-terra-validator/faq.html',
+    href: '/full-node/manage-a-jmes-validator/faq.html',
     lightSVG: '/img/icons/about.svg',
     darkSVG: '/img/icons/dark/about.svg',
     header: 'Validator FAQ',

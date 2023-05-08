@@ -16,47 +16,26 @@ Before you attempt to sync your node, confirm that you have properly set up your
 
 ## Sync from genesis
 
-The process for syncing your full node from genesis will differ between the JMES-888 testnet and Udo mainnet networks. You may proceed with the instructions corresponding with your [chosen network](./join-a-network.mdx#join-a-public-network) below.
+### JMES-testnet-1
 
-### JMES-888 testnet
-
-1. To install the latest version `v2.0.0-rc.0` of jmesd, [navigate into your `core` directory](./build-jmes-core.mdx#get-the-jmes-core-source-code) and execute the following commands in your terminal:
+1. Update the `persistent_peers` setting with a list of stable persistent peers in your `config.toml` file. Use the following commands:
 
 ```
-cd app
-go build
+PEERS=2a39d42bb299b913e5dbbaf9a5e458fb3ff7536b@164.92.191.45/:26656,eb490967a016bbcb361ab2ba1f6d2a2ca1eb8593@46.101.197.51:26656
+sed -i.bak -e "s|^persistent_peers *=.*|persistent_peers = \"$PEERS\"|" $HOME/.jmes/config/config.toml
 ```
 
-After running these commands, make sure that you have switched to the correct version of jmesd by running the following command:
+2. Finally, you can start the syncing process:
 
-```
-jmesd version
-```
-
-The result of this command should be `<TBD>`.
-
-2. After you have the correct jmesd version, you will need to download the genesis file for JMES-888 in the jmesd config directory:
-
-```
-wget https://raw.githubusercontent.com/jmesworld/testnet/main/jmes-888/genesis.json -O ~/.jmes/config/genesis.json
-```
-
-3. Next, update the `persistent_peers` setting with a list of stable persistent peers in your `config.toml` file. Use the following commands:
-
-```
-PEERS=aa1b205bbdad21a77b3054581fab1897b18d9133@51.38.52.37:26656
-sed -i.bak -e "s/^persistent_peers *=.*/persistent_peers = \"$PEERS\"/" $HOME/.jmes/config/config.toml
-```
-
-4. Finally, you can start the syncing process:
-
-```
+```py
 jmesd start
+# OR
+systemctl start jmesd    # runs as a system service in the background
 ```
 
 <Admonition type="caution" icon="☢️" title="Sync start times">
 
-Nodes take at least an hour to start syncing. This wait time is normal. Before troubleshooting a sync, please wait an hour for the sync to start.
+Nodes take about an hour to start syncing. This wait time is normal. Before troubleshooting a sync, please wait an hour for the sync to start.
 
 </Admonition>
 
@@ -64,69 +43,26 @@ From here, you can [monitor the sync](#monitor-the-sync). Make sure to check on 
 
 ### Udo mainnet
 
-If you would like to sync your node using the Udo mainnet, you will need to utilize version `v2.0.0` of jmesd up until the block height of 890,000. To sync your node from block 890,000 onward, you will need to utilize version `v2.1.1` of jmesd.
-
-1. To switch to version `v2.0.0` of jmesd, [change into your `core` directory](./build-jmes-core.mdx#get-the-jmes-core-source-code) and execute the following commands in your terminal:
+1. Update the `persistent_peers` setting with a list of stable persistent peers in your `config.toml` file. Use the following commands:
 
 ```
-git checkout v2.0.0
-make install
+PEERS=2a39d42bb299b913e5dbbaf9a5e458fb3ff7536b@164.92.191.45/:26656,eb490967a016bbcb361ab2ba1f6d2a2ca1eb8593@46.101.197.51:26656
+sed -i.bak -e "s|^persistent_peers *=.*|persistent_peers = \"$PEERS\"|" $HOME/.jmes/config/config.toml
 ```
 
-After running these commands, make sure that you have switched to the correct version of jmesd by running the following command:
+2. Finally, you can start the syncing process:
 
-```
-jmesd version
-```
-
-The result of this command should be `v2.0.0`.
-
-2. After you have the correct jmesd version, you will need to download the genesis file for Udo in the jmesd config directory:
-
-```
-wget https://phoenix-genesis.s3.us-west-1.amazonaws.com/genesis.json -O ~/.jmes/config/genesis.json
-```
-
-3. Next, download the `addrbook.json` file containing a list of stable persistent peers into the `~/.jmes/config/` directory:
-
-```
-wget https://snapshots1.polkachu.com/addrbook/jmes/addrbook.json -O ~/.jmes/config/addrbook.json
-```
-
-4. Finally, you can start the syncing process:
-
-```
+```py
 jmesd start
+# OR
+systemctl start jmesd    # runs as a system service in the background
 ```
 
 <Admonition type="caution" icon="☢️" title="Sync start times">
 
-Nodes take at least an hour to start syncing. This wait time is normal. Before troubleshooting a sync, please wait an hour for the sync to start.
+Nodes take about an hour to start syncing. This wait time is normal. Before troubleshooting a sync, please wait an hour for the sync to start.
 
 </Admonition>
-
-Syncing will halt at block 890,000, at which point you will need to change the version of jmesd and then resume the syncing process.
-
-5. To sync your Udo mainnet node from block 890,000 to the most recent block, you will need to navigate to the `core` directory and change your jmesd version to `v2.1.1`.
-
-```
-git checkout v2.1.1
-make install
-```
-
-Again, make sure that you have switched to the correct version of jmesd by running the following command:
-
-```
-jmesd version
-```
-
-The result of this command should be `v2.1.1`.
-
-6. Now, you can resume the syncing process:
-
-```
-jmesd start
-```
 
 From here, you can [monitor the sync](#monitor-the-sync). Make sure to check on your node periodically to ensure optimal performance.
 
@@ -137,38 +73,31 @@ From here, you can [monitor the sync](#monitor-the-sync). Make sure to check on 
 ```json
 {
   "NodeInfo": {
-    "protocol_version": {
-      "p2p": "8",
-      "block": "11",
-      "app": "0"
-    },
-    "id": "821dc1401fd0270487b3e615c652181b4d4566dd",
-    "listen_addr": "18.157.84.154:26656",
-    "network": "pisco-1",
-    "version": "v0.34.19-jmes.2",
+    "protocol_version": { "p2p": "8", "block": "11", "app": "0" },
+    "id": "c7323e759deafdc953e86344fd42cdb7654f18f2",
+    "listen_addr": "165.232.126.11:26656",
+    "network": "jmes-testnet-1",
+    "version": "v0.34.21-terra.1",
     "channels": "40202122233038606100",
-    "moniker": "jmesdocs",
-    "other": {
-      "tx_index": "on",
-      "rpc_address": "tcp://127.0.0.1:26657"
-    }
+    "moniker": "rockbridge",
+    "other": { "tx_index": "on", "rpc_address": "tcp://165.232.126.11:26657" }
   },
   "SyncInfo": {
-    "latest_block_hash": "ED9F6D0855FD92A5BA2F91082CD49ADB18A07DCE3F747529D357071E5B7C0D4C",
-    "latest_app_hash": "D621068882E7FC5045CDD957ADEABE9BF8E90F2092C9526E22BE4767940D128B",
-    "latest_block_height": "260770",
-    "latest_block_time": "2022-06-09T15:22:48.792283245Z",
-    "earliest_block_hash": "F948EF10AA663D182309790C51E5A7A9125D7CF4D60D9E735994059DB7CAD4D4",
+    "latest_block_hash": "831AE8E7CA3CFEC269DA4A800C7EAD8F7FF9EF072A8691BE21263F47FCA8E23C",
+    "latest_app_hash": "128F4B8FA0BB0F85CE47CA0B871704D014C2B6CA702B7A11DE584C1C351F9252",
+    "latest_block_height": "4293",
+    "latest_block_time": "2023-05-04T01:02:12.387416454Z",
+    "earliest_block_hash": "A121600E4F9338A276F7BDC1ED11BA3F20B06E20709A68CCF37D03B96BE44A50",
     "earliest_app_hash": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855",
     "earliest_block_height": "1",
-    "earliest_block_time": "2022-05-23T06:00:00Z",
-    "catching_up": false
+    "earliest_block_time": "2023-05-03T18:34:13.094118969Z",
+    "catching_up": true
   },
   "ValidatorInfo": {
-    "Address": "04024A7F76485B0D2B99570EC7DA3E9A3B3735CC",
+    "Address": "6868853EC398BB6A860FA516D9334B923B7AF26E",
     "PubKey": {
       "type": "tendermint/PubKeyEd25519",
-      "value": "KUqIsRD9yzPt7k9et+ClFp6h8wXwEIcb/TVZPrC57+I="
+      "value": "dkOFal7VimemCDGfxgOJY9XmqbQF1NAegXBSM0IO8WQ="
     },
     "VotingPower": "0"
   }
@@ -244,11 +173,9 @@ Your node is catching up with the network by replaying all the transactions from
   }
 ```
 
-Compare this height to the **Latest Blocks** by checking the API for the latest block heights on [Udo](https://phoenix-lcd.terra.dev/blocks/latest), or [Pisco](https://pisco-lcd.terra.dev/blocks/latest) to see your progress.
-
 ## Sync complete
 
-You can tell that your node is in sync with the network when `SyncInfo.catching_up` in the `jmesd status` response returns `false` and the `latest_block_height` corresponds to the public network blockheight found on the API for either [Udo](https://phoenix-lcd.terra.dev/blocks/latest), or [Pisco](https://pisco-lcd.terra.dev/blocks/latest).
+You can tell that your node is in sync with the network when `SyncInfo.catching_up` in the `jmesd status` response returns `false` and the `latest_block_height` corresponds to the public network blockheight.
 
 ```bash
 jmesd status
@@ -265,8 +192,6 @@ jmesd status
   ...
   }
 ```
-
-Validators can view the status of the network using [JMES Explorer](http://explorer.jmes.cloud).
 
 ## Congratulations!
 

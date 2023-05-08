@@ -6,8 +6,6 @@ sidebar_position: 3
 
 Use this guide to set up and manage a production-level full JMES node.
 
-For information about running a validator node, visit the [validator guide](../manage-a-jmes-validator/README.mdx).
-
 ## Create a dedicated user
 
 Although jmesd does not require a super user account, during the setup process you'll need super user permissions to create and modify some files. It is strongly recommended to use a normal user when running jmesd.
@@ -62,11 +60,9 @@ jmesd must be running at all times. It is recommended that you register jmesd as
 
 3. Run `systemctl daemon-reload` followed by `systemctl enable jmesd`. This will register jmesd as a system service and run the program upon startup.
 
-4. Now start the serivce with `systemctl start jmesd`.
-
 ### Controlling the service
 
-Use `systemctl` to start, stop, and restart the service:
+Use `systemctl` to start, stop, and restart the service. Note: Only do this after you've fully configured your node 
 
 ```bash
 # Check health

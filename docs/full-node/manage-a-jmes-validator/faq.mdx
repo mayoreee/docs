@@ -1,5 +1,5 @@
 ---
-sidebar_position: 1
+sidebar_position: 4
 ---
 
 import Admonition from '@theme/Admonition';
@@ -96,8 +96,9 @@ Once a validator is created and registered, bJMES holders can delegate bJMES to 
   - This Keypair is generated when a node is created with `jmesd init`.
   - The Private Key can be found in the `priv_validator_key.json` file in the `config` directory after running `jmesd init`.
   - The Public Key is derived from the Private Key and can be found and seen by running the command `jmesd tendermint show-validator`
-
-    **Example:** `jmesvalconspub1zcjduc3qcyj09qc03elte23zwshdx92jm6ce88fgc90rtqhjx8v0608qh5ssp0w94c`
+  - The Public Key's associated bech32 address can be found and seen by running the command `jmesd tendermint show-address`
+  
+    **Example:** `jmesvalcons1dp5g20krnzak4ps055tdjv6tjgah4unwpmxngz`
 
 <Admonition type="caution" icon="☢️">
 

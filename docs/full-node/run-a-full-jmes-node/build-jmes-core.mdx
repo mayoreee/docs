@@ -10,18 +10,38 @@ JMES Core is the official Golang reference implementation of the JMES node softw
 
 ## Get the JMES Core source code
 
-1. Use `git` to retrieve [JMES Core](https://github.com/jmesworld/core/), and check out the `cosmwasm` branch, which contains the latest stable release. You can find the latest tag on the [tags page](https://github.com/jmesworld/core/tags) or via autocomplete in your terminal: type `git checkout v` and press `<TAB>`.
+1. Use `git` to retrieve [JMES Core](https://github.com/jmesworld/core/), and check out the `feat/winning_grants` branch, which contains the latest stable release. You can find the latest tag on the [tags page](https://github.com/jmesworld/core/tags) or via autocomplete in your terminal: type `git checkout v` and press `<TAB>`.
 
    ```
-   git clone -b cosmwasm https://github.com/jmesworld/core
+   git clone -b feat/winning_grants https://github.com/jmesworld/core
+   ```
+
+2. Use `git` to retrieve [Cosmos SDK](https://github.com/jmesworld/cosmos/), and check out the `v0.46.0` branch, which contains the latest stable release. Also, copy the path to this folder for the next step.
+
+   ```py
+   git clone -b v0.46.0 https://github.com/jmesworld/cosmos-sdk.git
+
+   #  Now, copy the path to your cosmos-sdk folder
+   cd cosmos-sdk && pwd   # e.g. /root/cosmos-sdk  <-- Copy your path. You will need it in the next step!!
+   cd ..
+   ```
+
+3. Replace dependecy in `go.mod` file. Ensure replace `<PATH TO YOUR cosmos-sdk folder>` with the what you copied in Step 2 above.
+
+   ```py
    cd core
+
+   sed -i 's|github.com/cosmos/cosmos-sdk => /Users/alex/GitHub/JMESWorld/cosmos-sdk| github.com/cosmos/cosmos-sdk => <PATH TO YOUR cosmos-sdk folder>|g' go.mod
+
+   #Example: sed -i 's|github.com/cosmos/cosmos-sdk => /Users/alex/GitHub/JMESWorld/cosmos-sdk|github.com/cosmos/cosmos-sdk => /root/cosmos-sdk|g' go.mod
+
+ 
    ```
 
-2. Build JMES Core. This will install the JMESd executable to your [ `GOPATH` ](https://go.dev/doc/gopath_code) environment variable.
+4. Build JMES Core. This will install the JMESd executable to your [ `GOPATH` ](https://go.dev/doc/gopath_code) environment variable.
 
    ```bash
-   cd app 
-   go build
+   make install
    ```
 
 3. Verify that JMES Core is installed correctly.
@@ -35,10 +55,10 @@ JMES Core is the official Golang reference implementation of the JMES node softw
    ```bash
    name: jmes
    server_name: jmesd
-   version: v2.0.0
-   commit: ea682c41e7e71ba0b182c9e7f989855fb9595885
-   build_tags: netgo,ledger
-   go: go version go1.18.2 darwin/amd64
+   version: feat/winning_grants-8d8a9c26047d9b834ada5c3c7c6880857b3ee4e1
+   commit: 8d8a9c26047d9b834ada5c3c7c6880857b3ee4e1
+   build_tags: netgo ledger,
+   go: go version go1.20.4 linux/amd64
    # ...followed by a lot of dependenecies
    ```
 
