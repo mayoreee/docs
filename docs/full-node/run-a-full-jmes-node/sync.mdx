@@ -21,7 +21,7 @@ Before you attempt to sync your node, confirm that you have properly set up your
 1. Update the `persistent_peers` setting with a list of stable persistent peers in your `config.toml` file. Use the following commands:
 
 ```
-PEERS=2a39d42bb299b913e5dbbaf9a5e458fb3ff7536b@164.92.191.45/:26656,eb490967a016bbcb361ab2ba1f6d2a2ca1eb8593@46.101.197.51:26656
+PEERS=2a39d42bb299b913e5dbbaf9a5e458fb3ff7536b@164.92.191.45:26656,eb490967a016bbcb361ab2ba1f6d2a2ca1eb8593@46.101.197.51:26656
 sed -i.bak -e "s|^persistent_peers *=.*|persistent_peers = \"$PEERS\"|" $HOME/.jmes/config/config.toml
 ```
 
